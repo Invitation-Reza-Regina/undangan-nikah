@@ -61,7 +61,7 @@
         .cover-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(20, 19, 18, 0.30), rgba(20, 19, 18, 0.55));
+            background: linear-gradient(to bottom, rgba(34, 26, 22, 0.20), rgba(34, 26, 22, 0.60));
         }
 
         .cover-kicker {
@@ -78,6 +78,14 @@
             backdrop-filter: blur(2px);
             padding: 0.55rem 0.9rem;
             border-radius: 999px;
+        }
+
+        .soft-luxury .cover-kicker {
+            background: rgba(245, 236, 225, 0.12);
+            border-color: rgba(255, 255, 255, 0.42);
+            letter-spacing: 0.26em;
+            font-size: 0.68rem;
+            padding: 0.65rem 1.1rem;
         }
 
         .cover-title {
@@ -101,6 +109,11 @@
             height: 1px;
             background: rgba(255, 255, 255, 0.65);
             margin: 0 auto;
+        }
+
+        .soft-luxury .cover-divider {
+            width: 110px;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.8), rgba(255,255,255,0));
         }
 
         .cover-text {
@@ -141,15 +154,14 @@
 
     <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-12 border-x border-sage/20">
 
-        <section class="cover-variant relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.28), rgba(247, 245, 240, 0.38)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80');">
+        <section class="soft-luxury cover-variant relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(245, 233, 222, 0.18), rgba(70, 58, 52, 0.52)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80');">
             <div class="cover-overlay"></div>
 
-            <div class="relative z-10 w-full flex justify-end">
-                <div class="cover-kicker">Wedding Day</div>
+            <div class="relative z-10 w-full flex justify-center">
+                <div class="cover-kicker">With joy in our hearts</div>
             </div>
 
-            <div class="relative z-10 my-auto space-y-6 cover-text cover-title">
-                <p class="cover-kicker text-sm !bg-transparent !border-0 !backdrop-blur-none !rounded-none !px-0 !py-0 !text-white">With joy in our hearts</p>
+            <div class="relative z-10 my-auto space-y-5 cover-text cover-title">
                 <div class="cover-divider"></div>
                 <h1 class="font-script text-6xl leading-tight cover-name">
                     Reza <br>
