@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#85937D">
+    <meta name="description" content="Undangan pernikahan Reza & Regina - 05 Desember 2026">
+    <meta property="og:title" content="Undangan Pernikahan Reza & Regina">
+    <meta property="og:description" content="Undangan pernikahan Reza & Regina - 05 Desember 2026">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invitation-reza-regina.github.io/undangan-nikah/">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Undangan Pernikahan - Reza & Regina</title>
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,7 +56,10 @@
         .font-serif {
             font-family: 'Cormorant Garamond', serif;
         }
-        /* Custom Scrollbar */
+        #musicToggle:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -65,18 +75,18 @@
 <body class="antialiased selection:bg-sage selection:text-white">
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
+    <div id="toast" aria-live="polite" aria-atomic="true" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 max-w-xs">
         <i class="fa-solid fa-circle-check text-sage"></i>
         <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
     </div>
 
     <!-- Music Player Controls -->
-    <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300 focus:outline-none">
-        <i id="musicIcon" class="fa-solid fa-music animate-spin" style="animation-duration: 4s;"></i>
+    <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300" type="button">
+        <i id="musicIcon" class="fa-solid fa-volume-xmark" aria-hidden="true"></i>
     </button>
-    
+
     <!-- Audio Source -->
-    <audio id="bgAudio" loop preload="auto">
+    <audio id="bgAudio" loop preload="none">
         <source src="Theme of Prontera - Saxophone Version (1).mp3" type="audio/mpeg">
     </audio>
 
@@ -84,9 +94,13 @@
     <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-12 border-x border-sage/20">
 
         <!-- 01. COVER SECTION -->
-        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.8), rgba(247, 245, 240, 0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');">
+        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.5), rgba(247, 245, 240, 0.65)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80');">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="relative z-10 w-full flex justify-end">
+                <div class="px-3 py-1 rounded-full border border-white/60 bg-white/10 backdrop-blur-sm text-[10px] uppercase tracking-[0.25em] text-white">Wedding Day</div>
+            </div>
 
-            <div class="my-auto space-y-6">
+            <div class="relative z-10 my-auto space-y-6">
                 <p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p>
                 <h1 class="font-script text-6xl text-sageDark leading-tight">
                     Reza <br>
@@ -96,7 +110,7 @@
                 <p class="text-sm tracking-[0.2em] text-darkText font-medium">05 . 12 . 2026</p>
             </div>
 
-            <div class="w-full space-y-4">
+            <div class="relative z-10 w-full space-y-4">
                 <a href="#opening" id="btnOpenInvitation" class="inline-block w-full py-3.5 px-6 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
                     Buka Undangan
                 </a>
@@ -107,12 +121,12 @@
         <section id="opening" class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-ivory">
             <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">A Little Celebration of Love</p>
             <div class="w-8 h-[1px] bg-sage mx-auto"></div>
-            
+
             <div class="space-y-3 max-w-xs mx-auto text-xs text-mutedGray leading-relaxed">
                 <p class="font-serif text-base italic text-darkText">"Two lives, one beautiful beginning."</p>
                 <p>With our closest people around us, we would be honored to have you witness our wedding day.</p>
             </div>
-            
+
             <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
         </section>
 
@@ -151,15 +165,14 @@
                 <p class="font-semibold text-darkText">Mingle Wedding Lunch &amp; Celebration</p>
             </div>
 
-            <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i>
-            </div>
+            <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
         </section>
 
         <!-- 05. A LITTLE NOTE (SOLID SAGE CARD) -->
         <section class="py-16 px-8 text-center space-y-6 bg-sage text-white">
             <p class="text-[10px] uppercase tracking-[0.3em] text-ivory/80">A Little Note</p>
             <h2 class="font-serif text-2xl font-bold tracking-wide">Privasi &amp; Kenyamanan</h2>
-            
+
             <div class="space-y-3 text-xs leading-relaxed text-ivory max-w-xs mx-auto">
                 <p>Karena kami ingin merayakan hari ini dalam suasana yang intim dan personal, undangan ini diperuntukkan bagi 1 orang tamu sesuai nama yang tercantum.</p>
                 <p>Mohon berkenan hadir sesuai dengan jumlah tamu yang tertera pada undangan.</p>
@@ -172,7 +185,7 @@
         <!-- 06. DRESS CODE SECTION -->
         <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
             <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray font-semibold">Dress Code</p>
-            
+
             <!-- Color Palette Circles -->
             <div class="flex items-center justify-center gap-3 py-2">
                 <div class="w-8 h-8 rounded-full bg-[#85937D] shadow-sm" title="Sage"></div>
@@ -193,7 +206,7 @@
         <section class="py-12 px-8 text-center bg-ivory border-b border-sage/20">
             <h2 class="font-serif text-xl font-bold text-darkText mb-1">Menghitung Hari</h2>
             <p class="text-[10px] text-mutedGray mb-6 tracking-widest uppercase">Menuju Hari Bahagia Kami</p>
-            
+
             <div class="grid grid-cols-4 gap-2 text-center">
                 <div class="bg-white p-3 rounded-xl shadow-2xs border border-sage/20">
                     <span id="days" class="font-serif text-2xl font-bold text-darkText block">00</span>
@@ -219,7 +232,7 @@
             <div class="space-y-1">
                 <p class="text-[10px] uppercase tracking-widest text-mutedGray font-semibold">Tanda Kasih</p>
                 <h2 class="font-serif text-2xl font-bold text-darkText">Amplop Digital</h2>
-                <p class="text-xs text-mutedGray max-w-xs mx-auto">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi kado, Anda dapat menggunakan rekening di bawah ini:</p>
+                <p class="text-xs text-mutedGray max-w-xs mx-auto">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi kado, Anda dapat menggunakan rekening di bawah ini.</p>
             </div>
 
             <div class="space-y-4 pt-2">
@@ -234,7 +247,7 @@
                         <p class="font-mono text-base font-bold text-darkText tracking-widest">0663297012</p>
                         <p class="text-xs text-mutedGray mt-0.5">a.n. Regina Claodia</p>
                     </div>
-                    <button onclick="copyToClipboard('0663297012', 'Nomor Rekening BCA')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-all duration-200 flex items-center justify-center gap-2">
+                    <button onclick="copyToClipboard('0663297012', 'Nomor Rekening BCA')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-all duration-300">
                         <i class="fa-regular fa-copy"></i>
                         Salin Rekening BCA
                     </button>
@@ -251,7 +264,7 @@
                         <p class="font-mono text-base font-bold text-darkText tracking-widest">901649988060</p>
                         <p class="text-xs text-mutedGray mt-0.5">a.n. Reza Mutaqin</p>
                     </div>
-                    <button onclick="copyToClipboard('901649988060', 'Nomor Rekening SeaBank')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-all duration-200 flex items-center justify-center gap-2">
+                    <button onclick="copyToClipboard('901649988060', 'Nomor Rekening SeaBank')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-all duration-300">
                         <i class="fa-regular fa-copy"></i>
                         Salin Rekening SeaBank
                     </button>
@@ -270,20 +283,20 @@
             <!-- RSVP Form -->
             <form id="rsvpForm" class="bg-white p-6 rounded-2xl shadow-2xs border border-sage/30 space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-darkText mb-1">Nama Lengkap</label>
+                    <label for="guestName" class="block text-xs font-semibold text-darkText mb-1">Nama Lengkap</label>
                     <input type="text" id="guestName" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-2.5 rounded-xl border border-sage/40 text-xs focus:outline-none focus:border-sage bg-warmCream/50">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-darkText mb-1">Konfirmasi Kehadiran</label>
+                    <label for="attendance" class="block text-xs font-semibold text-darkText mb-1">Konfirmasi Kehadiran</label>
                     <select id="attendance" required class="w-full px-4 py-2.5 rounded-xl border border-sage/40 text-xs focus:outline-none focus:border-sage bg-warmCream/50">
                         <option value="Hadir">Ya, Saya Akan Hadir</option>
                         <option value="Tidak Hadir">Maaf, Saya Tidak Bisa Hadir</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-darkText mb-1">Pesan &amp; Doa Ucapan</label>
-                    <textarea id="guestMessage" rows="3" required placeholder="Tuliskan ucapan selamat & doa restu..." class="w-full px-4 py-2.5 rounded-xl border border-sage/40 text-xs focus:outline-none focus:border-sage bg-warmCream/50 resize-none"></textarea>
+                    <label for="guestMessage" class="block text-xs font-semibold text-darkText mb-1">Pesan &amp; Doa Ucapan</label>
+                    <textarea id="guestMessage" rows="3" required placeholder="Tuliskan ucapan selamat & doa restu..." class="w-full px-4 py-2.5 rounded-xl border border-sage/40 text-xs focus:outline-none focus:border-sage bg-warmCream/50"></textarea>
                 </div>
 
                 <button type="submit" class="w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300 shadow-md">
@@ -308,7 +321,7 @@
         <!-- 08. LOCATION SECTION -->
         <section class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
             <h2 class="font-script text-5xl text-sageDark">Location</h2>
-            
+
             <div class="space-y-1 text-xs text-mutedGray">
                 <p class="font-bold text-darkText uppercase">Restoran Serreh Wangi</p>
                 <p>Jl. Leuwinanggung, Tapos, Kec. Tapos, Kota Depok, Jawa Barat 16457</p>
@@ -316,10 +329,10 @@
 
             <!-- Map Mockup / Embed container -->
             <div class="w-full h-48 rounded-2xl overflow-hidden border border-sage/30 shadow-2xs relative bg-gray-200">
-                <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2530635489745!2d106.883!3d-6.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjEnNDMuMiJTIDEwNsKwNTInNTguOCJF!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe title="Google Maps Location" src="https://www.google.com/maps?q=Restoran%20Serreh%20Wangi%20Depok&z=15&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold hover:bg-sageDark transition-all duration-300 shadow-md">
+            <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300">
                 <i class="fa-solid fa-map-location-dot"></i>
                 Open in Maps
             </a>
@@ -344,8 +357,8 @@
             <p>This digital invitation is personal and non-transferable.</p>
             <p class="font-medium">We look forward to celebrating this intimate day with you.</p>
             <div class="pt-2 border-t border-ivory/20 flex justify-between items-center text-[10px] uppercase tracking-widest text-ivory/80 pt-4">
-              <span>&copy; 2026 Reza &amp; Regina</span>
-              <span>With Love</span>
+                <span>&copy; 2026 Reza &amp; Regina</span>
+                <span>With Love</span>
             </div>
         </footer>
 
@@ -354,10 +367,10 @@
     <!-- JAVASCRIPT LOGIC -->
     <script>
         // --- 1. COUNTDOWN TIMER ---
-        const targetDate = new Date("December 5, 2026 10:00:00").getTime();
+        const targetDate = new Date("2026-12-05T10:00:00+07:00").getTime();
 
         function updateCountdown() {
-            const now = new Date().getTime();
+            const now = Date.now();
             const difference = targetDate - now;
 
             if (difference > 0) {
@@ -386,88 +399,141 @@
         const musicIcon = document.getElementById("musicIcon");
         const btnOpenInvitation = document.getElementById("btnOpenInvitation");
         let isPlaying = false;
+        let toastTimer = null;
 
-        function toggleAudio() {
-            if (isPlaying) {
-                bgAudio.pause();
-                musicIcon.classList.remove("animate-spin");
-                musicIcon.classList.replace("fa-music", "fa-volume-xmark");
-            } else {
-                bgAudio.play().then(() => {
-                    musicIcon.classList.add("animate-spin");
-                    musicIcon.classList.replace("fa-volume-xmark", "fa-music");
-                }).catch(err => console.log("Audio playback blocked:", err));
-            }
-            isPlaying = !isPlaying;
+        function setMusicButtonState(playing) {
+            isPlaying = playing;
+            musicIcon.className = `fa-solid ${playing ? 'fa-music animate-spin' : 'fa-volume-xmark'}`;
+            musicIcon.style.animationDuration = '4s';
+            musicToggle.setAttribute('aria-pressed', String(playing));
         }
 
-        musicToggle.addEventListener("click", toggleAudio);
+        function handleAudioError() {
+            musicToggle.disabled = true;
+            musicToggle.title = 'Audio undangan tidak tersedia';
+            setMusicButtonState(false);
+            musicIcon.className = 'fa-solid fa-volume-xmark';
+        }
 
-        btnOpenInvitation.addEventListener("click", () => {
-            if (!isPlaying) {
+        function toggleAudio() {
+            if (musicToggle.disabled) {
+                return;
+            }
+
+            if (bgAudio.paused) {
+                const playPromise = bgAudio.play();
+                if (playPromise && typeof playPromise.then === 'function') {
+                    playPromise
+                        .then(() => setMusicButtonState(true))
+                        .catch((error) => {
+                            console.warn('Audio playback blocked:', error);
+                            setMusicButtonState(false);
+                            showToast('Browser memblokir pemutaran audio. Klik tombol musik lagi untuk mencoba.');
+                        });
+                } else {
+                    setMusicButtonState(true);
+                }
+            } else {
+                bgAudio.pause();
+                setMusicButtonState(false);
+            }
+        }
+
+        bgAudio.addEventListener('error', handleAudioError);
+        bgAudio.addEventListener('ended', () => setMusicButtonState(false));
+        musicToggle.addEventListener('click', toggleAudio);
+
+        btnOpenInvitation.addEventListener('click', (event) => {
+            const openingSection = document.getElementById('opening');
+            if (openingSection) {
+                openingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            if (!musicToggle.disabled && !isPlaying) {
+                event.preventDefault();
                 toggleAudio();
             }
         });
 
         // --- 3. COPY TO CLIPBOARD & TOAST ---
-        function copyToClipboard(text, label) {
-            const tempInput = document.createElement("input");
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-
-            showToast(`${label} berhasil disalin!`);
+        async function copyToClipboard(text, label) {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = text;
+                    tempInput.setAttribute('readonly', '');
+                    tempInput.style.position = 'fixed';
+                    tempInput.style.left = '-9999px';
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                }
+                showToast(`${label} berhasil disalin!`);
+            } catch (error) {
+                console.error('Copy failed:', error);
+                showToast(`Gagal menyalin ${label}. Silakan salin manual.`);
+            }
         }
 
         function showToast(message) {
-            const toast = document.getElementById("toast");
-            const toastMsg = document.getElementById("toast-message");
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
             toastMsg.innerText = message;
-            
-            toast.classList.remove("translate-y-[-150%]");
-            toast.classList.add("translate-y-0");
 
-            setTimeout(() => {
-                toast.classList.remove("translate-y-0");
-                toast.classList.add("translate-y-[-150%]");
+            toast.classList.remove('translate-y-[-150%]');
+            toast.classList.add('translate-y-0');
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('translate-y-0');
+                toast.classList.add('translate-y-[-150%]');
             }, 3000);
         }
 
         // --- 4. RSVP & WISHES MANAGEMENT ---
         const defaultWishes = [
             {
-                name: "Ahmad & Keluarga",
-                status: "Hadir",
-                message: "Selamat Reza & Regina! Semoga menjadi keluarga yang sakinah mawaddah warahmah."
+                name: 'Ahmad & Keluarga',
+                status: 'Hadir',
+                message: 'Selamat Reza & Regina! Semoga menjadi keluarga yang sakinah mawaddah warahmah.'
             },
             {
-                name: "Siti Rahma",
-                status: "Hadir",
-                message: "Happy Wedding! So happy for both of you! ✨"
+                name: 'Siti Rahma',
+                status: 'Hadir',
+                message: 'Happy Wedding! So happy for both of you! ✨'
             }
         ];
 
         function getWishes() {
-            const saved = localStorage.getItem("wedding_wishes_sage");
-            return saved ? JSON.parse(saved) : defaultWishes;
+            try {
+                const saved = localStorage.getItem('wedding_wishes_sage');
+                if (!saved) return defaultWishes;
+
+                const parsed = JSON.parse(saved);
+                return Array.isArray(parsed) && parsed.length ? parsed : defaultWishes;
+            } catch (error) {
+                console.warn('Failed to read local wishes:', error);
+                return defaultWishes;
+            }
         }
 
         function renderWishes() {
             const wishes = getWishes();
-            const container = document.getElementById("wishesContainer");
-            container.innerHTML = "";
+            const container = document.getElementById('wishesContainer');
+            container.innerHTML = '';
 
             wishes.forEach(wish => {
-                const wishCard = document.createElement("div");
-                wishCard.className = "bg-white p-4 rounded-xl border border-sage/20 space-y-1 shadow-2xs text-left";
+                const wishCard = document.createElement('div');
+                wishCard.className = 'bg-white p-4 rounded-xl border border-sage/20 space-y-1 shadow-2xs text-left';
                 wishCard.innerHTML = `
-                    <div class="flex items-center justify-between">
-                        <span class="font-semibold text-xs text-darkText">${escapeHtml(wish.name)}</span>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full ${wish.status === 'Hadir' ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'}">${wish.status}</span>
+                    <div class="flex items-center justify-between gap-3">
+                        <span class="font-semibold text-xs text-darkText">${escapeHtml(String(wish.name || 'Tamu'))}</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full ${wish.status === 'Hadir' ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'}">${escapeHtml(String(wish.status || 'Hadir'))}</span>
                     </div>
-                    <p class="text-xs text-mutedGray leading-relaxed">${escapeHtml(wish.message)}</p>
+                    <p class="text-xs text-mutedGray leading-relaxed">${escapeHtml(String(wish.message || ''))}</p>
                 `;
                 container.appendChild(wishCard);
             });
@@ -475,31 +541,37 @@
 
         function escapeHtml(text) {
             const div = document.createElement('div');
-            div.innerText = text;
+            div.innerText = String(text);
             return div.innerHTML;
         }
 
-        document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+        document.getElementById('rsvpForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            const name = document.getElementById("guestName").value.trim();
-            const status = document.getElementById("attendance").value;
-            const message = document.getElementById("guestMessage").value.trim();
+
+            const name = document.getElementById('guestName').value.trim();
+            const status = document.getElementById('attendance').value;
+            const message = document.getElementById('guestMessage').value.trim();
 
             if (name && message) {
                 const wishes = getWishes();
                 wishes.unshift({ name, status, message });
-                localStorage.setItem("wedding_wishes_sage", JSON.stringify(wishes));
+
+                try {
+                    localStorage.setItem('wedding_wishes_sage', JSON.stringify(wishes));
+                } catch (error) {
+                    console.warn('Failed to save wishes:', error);
+                }
 
                 renderWishes();
                 this.reset();
-                showToast("Terima kasih atas konfirmasi & doa Anda!");
+                showToast('Terima kasih atas konfirmasi & doa Anda!');
             }
         });
 
-        window.onload = function() {
+        window.addEventListener('load', function () {
             renderWishes();
-        };
+            setMusicButtonState(false);
+        });
     </script>
 </body>
-                                                         </html>
+</html>
