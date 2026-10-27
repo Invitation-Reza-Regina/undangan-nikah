@@ -139,12 +139,14 @@
 </head>
 <body class="antialiased selection:bg-sage selection:text-white">
 
-    <div id="toast" aria-live="polite" aria-atomic="true" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 max-w-xs">
-        <i class="fa-solid fa-circle-check text-sage"></i>
-        <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
+    <div id="toast" aria-live="polite" aria-atomic="true" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-full shadow-lg">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-sage"></i>
+            <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
+        </div>
     </div>
 
-    <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300" type="button">
+    <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300">
         <i id="musicIcon" class="fa-solid fa-volume-xmark" aria-hidden="true"></i>
     </button>
 
@@ -154,7 +156,7 @@
 
     <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-12 border-x border-sage/20">
 
-        <section class="soft-luxury cover-variant relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(245, 233, 222, 0.18), rgba(70, 58, 52, 0.52)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80');">
+        <section class="soft-luxury cover-variant relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(rgba(83, 75, 63, 0.38), rgba(45, 36, 30, 0.48)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80');">
             <div class="cover-overlay"></div>
 
             <div class="relative z-10 w-full flex justify-center">
@@ -376,7 +378,7 @@
                 <iframe title="Google Maps Location" src="https://www.google.com/maps?q=Restoran%20Serreh%20Wangi%20Depok&z=15&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300">
+            <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-widest hover:bg-sageDark transition-all duration-300">
                 <i class="fa-solid fa-map-location-dot"></i>
                 Open in Maps
             </a>
@@ -406,7 +408,9 @@
 
     <script>
         const WISH_API_URL = 'https://script.google.com/macros/s/AKfycbx6TF7a53dKgQHxDKFoNHyv2VAYFie3Kk8lrHwZmlS8/dev';
+        const WISH_REFRESH_INTERVAL_MS = 15000;
         const targetDate = new Date("2026-12-05T10:00:00+07:00").getTime();
+        let wishesRefreshTimer = null;
 
         function updateCountdown() {
             const now = Date.now();
@@ -564,7 +568,23 @@
             });
         }
 
-        async function loadWishes() {
+        function stopWishSync() {
+            if (wishesRefreshTimer) {
+                clearInterval(wishesRefreshTimer);
+                wishesRefreshTimer = null;
+            }
+        }
+
+        function startWishSync() {
+            stopWishSync();
+            wishesRefreshTimer = setInterval(() => {
+                loadWishes({ silent: true });
+            }, WISH_REFRESH_INTERVAL_MS);
+        }
+
+        async function loadWishes(options = {}) {
+            const { silent = false } = options;
+
             try {
                 const response = await fetch(WISH_API_URL, {
                     method: 'GET',
@@ -576,13 +596,19 @@
                 }
 
                 const result = await response.json();
-                const wishes = Array.isArray(result) ? result : (result.wishes || []);
+                const wishes = Array.isArray(result)
+                    ? result
+                    : (Array.isArray(result?.wishes) ? result.wishes : (Array.isArray(result?.data) ? result.data : []));
+
                 renderWishes(wishes);
-                return;
+                return wishes;
             } catch (error) {
                 console.error('Failed to load wishes from shared API:', error);
-                const container = document.getElementById('wishesContainer');
-                container.innerHTML = '<p class="text-xs text-red-600 text-center">Gagal memuat ucapan bersama. Pastikan link Apps Script sudah di-publish sebagai Web App "Anyone".</p>';
+                if (!silent) {
+                    const container = document.getElementById('wishesContainer');
+                    container.innerHTML = '<p class="text-xs text-red-600 text-center">Gagal memuat ucapan bersama. Pastikan link Apps Script sudah di-publish sebagai Web App "Anyone".</p>';
+                }
+                return [];
             }
         }
 
@@ -599,13 +625,12 @@
                     throw new Error(`Submit response: ${response.status}`);
                 }
 
-                const result = await response.json();
-                const wishes = Array.isArray(result) ? result : (result.wishes || []);
-                renderWishes(wishes);
-                return;
+                await loadWishes({ silent: true });
+                return true;
             } catch (error) {
                 console.error('Failed to submit wish to shared API:', error);
                 showToast('Gagal mengirim ucapan ke server. Silakan cek akses Apps Scriptnya.');
+                return false;
             }
         }
 
@@ -621,13 +646,18 @@
                 return;
             }
 
-            await submitWish(name, status, message);
+            const success = await submitWish(name, status, message);
+            if (!success) {
+                return;
+            }
+
             this.reset();
             showToast('Terima kasih atas konfirmasi & doa Anda!');
         });
 
         window.addEventListener('load', function () {
             loadWishes();
+            startWishSync();
             setMusicButtonState(false);
         });
     </script>
