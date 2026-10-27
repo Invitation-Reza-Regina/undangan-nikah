@@ -46,9 +46,11 @@
             background-color: #F7F5F0;
             color: #4A4A4A;
         }
+
         .font-script {
             font-family: 'Alex Brush', cursive;
         }
+
         .font-serif {
             font-family: 'Cormorant Garamond', serif;
         }
@@ -128,9 +130,11 @@
         ::-webkit-scrollbar {
             width: 5px;
         }
+
         ::-webkit-scrollbar-track {
             background: #F7F5F0;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #85937D;
             border-radius: 4px;
@@ -407,9 +411,8 @@
     </div>
 
     <script>
-        const WISH_API_URL = 'https://script.google.com/macros/s/AKfycbxXqI-2zwjrwsg2PpElUDK6Iqbp-nSoLf5fdJQm44mbo0NWe37anJaS4XtAZHt60Ko1Rg/exec';
-        const WISH_REFRESH_INTERVAL_MS = 15000;
         const targetDate = new Date("2026-12-05T10:00:00+07:00").getTime();
+        const WISH_REFRESH_INTERVAL_MS = 15000;
         let wishesRefreshTimer = null;
 
         function updateCountdown() {
@@ -433,6 +436,7 @@
                 document.getElementById("seconds").innerText = "00";
             }
         }
+
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
@@ -523,7 +527,6 @@
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
             toastMsg.innerText = message;
-
             toast.classList.remove('translate-y-[-150%]');
             toast.classList.add('translate-y-0');
 
@@ -582,59 +585,62 @@
             }, WISH_REFRESH_INTERVAL_MS);
         }
 
-        async function loadWishes(options = {}) {
+        function loadWishes(options = {}) {
             const { silent = false } = options;
 
-            try {
-                const response = await fetch(WISH_API_URL, {
-                    method: 'GET',
-                    cache: 'no-store'
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Server response: ${response.status}`);
-                }
-
-                const result = await response.json();
-                const wishes = Array.isArray(result)
-                    ? result
-                    : (Array.isArray(result?.wishes) ? result.wishes : (Array.isArray(result?.data) ? result.data : []));
-
-                renderWishes(wishes);
-                return wishes;
-            } catch (error) {
-                console.error('Failed to load wishes from shared API:', error);
-                if (!silent) {
-                    const container = document.getElementById('wishesContainer');
-                    container.innerHTML = '<p class="text-xs text-red-600 text-center">Gagal memuat ucapan bersama. Pastikan link Apps Script sudah di-publish sebagai Web App "Anyone".</p>';
-                }
+            if (typeof google === 'undefined' || !google.script || !google.script.run) {
+                const container = document.getElementById('wishesContainer');
+                container.innerHTML = '<p class="text-xs text-red-600 text-center">Halaman harus dipanggil dari Apps Script (same-origin).</p>';
                 return [];
             }
+
+            google.script.run
+                .withSuccessHandler((result) => {
+                    const wishes = Array.isArray(result?.wishes)
+                        ? result.wishes
+                        : Array.isArray(result)
+                            ? result
+                            : [];
+                    renderWishes(wishes);
+                })
+                .withFailureHandler((error) => {
+                    console.error('Failed to load wishes from Apps Script:', error);
+                    if (!silent) {
+                        const container = document.getElementById('wishesContainer');
+                        container.innerHTML = '<p class="text-xs text-red-600 text-center">Gagal memuat ucapan.</p>';
+                    }
+                })
+                .doGet();
+
+            return [];
         }
 
-        async function submitWish(name, status, message) {
-            try {
-                const response = await fetch(WISH_API_URL, {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, status, message })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Submit response: ${response.status}`);
-                }
-
-                await loadWishes({ silent: true });
-                return true;
-            } catch (error) {
-                console.error('Failed to submit wish to shared API:', error);
-                showToast('Gagal mengirim ucapan ke server. Silakan cek akses Apps Scriptnya.');
+        function submitWish(name, status, message) {
+            if (typeof google === 'undefined' || !google.script || !google.script.run) {
+                showToast('Halaman ini harus dijalankan dari Apps Script.');
                 return false;
             }
+
+            google.script.run
+                .withSuccessHandler((result) => {
+                    const wishes = Array.isArray(result?.wishes)
+                        ? result.wishes
+                        : Array.isArray(result)
+                            ? result
+                            : [];
+                    renderWishes(wishes);
+                    showToast('Terima kasih atas konfirmasi & doa Anda!');
+                })
+                .withFailureHandler((error) => {
+                    console.error('Failed to submit wish to Apps Script:', error);
+                    showToast('Gagal mengirim ucapan ke server.');
+                })
+                .doPost({ name, status, message });
+
+            return true;
         }
 
-        document.getElementById('rsvpForm').addEventListener('submit', async function (e) {
+        document.getElementById('rsvpForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const name = document.getElementById('guestName').value.trim();
@@ -646,13 +652,12 @@
                 return;
             }
 
-            const success = await submitWish(name, status, message);
+            const success = submitWish(name, status, message);
             if (!success) {
                 return;
             }
 
             this.reset();
-            showToast('Terima kasih atas konfirmasi & doa Anda!');
         });
 
         window.addEventListener('load', function () {
