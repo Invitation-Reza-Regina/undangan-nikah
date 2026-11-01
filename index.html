@@ -79,11 +79,6 @@
             <div class="my-auto space-y-6">
                 <p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p>
 
-                <div id="guestInfo" class="space-y-2 hidden">
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">Kepada Yth.</p>
-                    <p id="guestNameDisplay" class="font-serif text-3xl text-sageDark leading-tight"></p>
-                </div>
-
                 <h1 class="font-script text-6xl text-sageDark leading-tight">
                     Reza <br>
                     <span class="text-3xl font-serif italic text-mutedGray">&amp;</span> <br>
@@ -93,9 +88,11 @@
             </div>
 
             <div class="w-full space-y-3">
-                <div id="guestAboveButton" class="hidden mb-2 text-center">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">Dear</span>
-                    <p class="font-serif text-2xl text-sageDark"><span id="guestAboveButtonName"></span></p>
+                <div id="guestAboveButton" class="hidden w-full">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl border border-sage/20 px-4 py-3 shadow-sm">
+                        <p class="text-[9px] uppercase tracking-[0.3em] text-mutedGray mb-1">Kepada Yth.</p>
+                        <p class="font-serif text-2xl text-sageDark leading-tight"><span id="guestAboveButtonName"></span></p>
+                    </div>
                 </div>
                 <a href="#opening" id="btnOpenInvitation" class="inline-block w-full py-3.5 px-6 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
                     Buka Undangan
@@ -416,24 +413,19 @@
 
         function updateGuestDisplay() {
             const guestName = getGuestNameFromUrl();
-            const guestInfo = document.getElementById('guestInfo');
-            const guestNameDisplay = document.getElementById('guestNameDisplay');
+            const guestAboveButton = document.getElementById('guestAboveButton');
             const guestAboveButtonName = document.getElementById('guestAboveButtonName');
             const guestNameTexts = document.querySelectorAll('.guest-name-text');
             const guestNameLines = document.querySelectorAll('.guest-name-inline');
-            const guestAboveButton = document.getElementById('guestAboveButton');
 
             if (!guestName) {
-                guestInfo.classList.add('hidden');
                 guestAboveButton.classList.add('hidden');
                 guestNameLines.forEach(el => el.classList.add('hidden'));
                 return;
             }
 
             const formattedName = formatGuestName(guestName);
-            guestNameDisplay.textContent = formattedName;
             guestAboveButtonName.textContent = formattedName;
-            guestInfo.classList.remove('hidden');
             guestAboveButton.classList.remove('hidden');
             guestNameTexts.forEach(el => el.textContent = formattedName);
             guestNameLines.forEach(el => el.classList.remove('hidden'));
