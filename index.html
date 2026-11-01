@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #F7F5F0;
@@ -394,11 +397,18 @@
 
         musicToggle.addEventListener("click", toggleAudio);
 
-        btnOpenInvitation.addEventListener("click", () => {
-            if (!isPlaying) {
-                toggleAudio();
-            }
-        });
+        if (btnOpenInvitation) {
+            btnOpenInvitation.addEventListener("click", (event) => {
+                event.preventDefault();
+                const openingSection = document.getElementById("opening");
+                if (openingSection) {
+                    openingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+                if (!isPlaying) {
+                    toggleAudio();
+                }
+            });
+        }
 
         function getGuestNameFromUrl() {
             const params = new URLSearchParams(window.location.search);
