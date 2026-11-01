@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan - Reza & Regina</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,12 +28,9 @@
         }
     </script>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -97,14 +93,6 @@
             </div>
 
             <div class="w-full space-y-3">
-                <a id="shareWhatsAppBtn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3.5 px-6 rounded-full bg-[#25D366] text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-[#1ea952] transition-all duration-300">
-                    <i class="fa-brands fa-whatsapp mr-2"></i>
-                    Share ke WhatsApp
-                </a>
-                <button id="copyLinkBtn" type="button" class="w-full py-3.5 px-6 rounded-full bg-white text-darkText text-xs uppercase tracking-widest font-semibold shadow-md border border-sage/30 hover:bg-sage hover:text-white transition-all duration-300">
-                    <i class="fa-regular fa-copy mr-2"></i>
-                    Salin Link
-                </button>
                 <a href="#opening" id="btnOpenInvitation" class="inline-block w-full py-3.5 px-6 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
                     Buka Undangan
                 </a>
@@ -301,8 +289,7 @@
 
             <div class="space-y-4 pt-4">
                 <h3 class="font-serif text-lg font-bold text-darkText text-center">Ucapan &amp; Doa Restu</h3>
-                <div id="wishesContainer" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-                </div>
+                <div id="wishesContainer" class="space-y-3 max-h-72 overflow-y-auto pr-1"></div>
             </div>
         </section>
 
@@ -416,17 +403,10 @@
                 .replace(/\b\w/g, char => char.toUpperCase());
         }
 
-        function buildShareText() {
-            const guestName = getGuestNameFromUrl();
-            const guestText = guestName ? `Yth. ${formatGuestName(guestName)}\n\n` : '';
-            return guestText + `Anda diundang pada acara pernikahan kami.\nSilakan buka undangan berikut:\n${window.location.href}`;
-        }
-
-        function setShareLink() {
+        function updateGuestDisplay() {
             const guestName = getGuestNameFromUrl();
             const guestInfo = document.getElementById('guestInfo');
             const guestNameDisplay = document.getElementById('guestNameDisplay');
-            const shareWhatsAppBtn = document.getElementById('shareWhatsAppBtn');
 
             if (guestName) {
                 guestNameDisplay.textContent = formatGuestName(guestName);
@@ -434,23 +414,7 @@
             } else {
                 guestInfo.classList.add('hidden');
             }
-
-            const shareText = encodeURIComponent(buildShareText());
-            shareWhatsAppBtn.href = `https://wa.me/?text=${shareText}`;
         }
-
-        function copyLink() {
-            const url = window.location.href;
-            const tempInput = document.createElement('input');
-            tempInput.value = url;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            showToast('Link undangan berhasil disalin!');
-        }
-
-        document.getElementById('copyLinkBtn').addEventListener('click', copyLink);
 
         function copyToClipboard(text, label) {
             const tempInput = document.createElement("input");
@@ -539,7 +503,7 @@
         });
 
         window.onload = function() {
-            setShareLink();
+            updateGuestDisplay();
             renderWishes();
         };
     </script>
