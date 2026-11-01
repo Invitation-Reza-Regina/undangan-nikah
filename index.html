@@ -261,7 +261,9 @@
             <form id="rsvpForm" class="bg-white p-6 rounded-2xl shadow-2xs border border-sage/30 space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-darkText mb-1">Nama Lengkap</label>
-                    <input type="text" id="guestName" readonly required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-2.5 rounded-xl border border-sage/40 text-xs focus:outline-none focus:border-sage bg-warmCream/50 cursor-not-allowed text-darkText">
+                    <div id="guestNameDisplay" class="w-full px-4 py-3 rounded-xl border border-sage/40 bg-warmCream/50 text-xs font-medium text-darkText text-center shadow-sm min-h-[42px] flex items-center justify-center">
+                        Tamu Undangan
+                    </div>
                 </div>
 
                 <div>
@@ -274,7 +276,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-darkText mb-1">Jumlah Tamu</label>
-                    <input type="number" id="guestCount" min="1" max="1" value="1" readonly class="w-full px-4 py-2.5 rounded-xl border border-sage/40 text-xs focus:outline-none focus:border-sage bg-warmCream/50 cursor-not-allowed text-darkText" aria-readonly="true">
+                    <div id="guestCountDisplay" class="w-full px-4 py-3 rounded-xl border border-sage/40 bg-warmCream/50 text-xs font-medium text-darkText text-center shadow-sm min-h-[42px] flex items-center justify-center">1</div>
                 </div>
 
                 <div>
@@ -417,12 +419,12 @@
             const guestAboveButtonName = document.getElementById('guestAboveButtonName');
             const guestNameTexts = document.querySelectorAll('.guest-name-text');
             const guestNameLines = document.querySelectorAll('.guest-name-inline');
-            const guestNameInput = document.getElementById('guestName');
-            const guestCountInput = document.getElementById('guestCount');
+            const guestNameDisplay = document.getElementById('guestNameDisplay');
+            const guestCountDisplay = document.getElementById('guestCountDisplay');
 
             const finalGuestName = formatGuestName(guestName || 'Tamu Undangan');
-            guestNameInput.value = finalGuestName;
-            guestCountInput.value = 1;
+            guestNameDisplay.textContent = finalGuestName;
+            guestCountDisplay.textContent = '1';
 
             if (!guestName) {
                 guestAboveButton.classList.add('hidden');
@@ -507,7 +509,8 @@
         document.getElementById("rsvpForm").addEventListener("submit", function(e) {
             e.preventDefault();
             
-            const name = document.getElementById("guestName").value.trim();
+            const guestNameDisplay = document.getElementById("guestNameDisplay");
+            const name = guestNameDisplay.textContent.trim();
             const status = document.getElementById("attendance").value;
             const message = document.getElementById("guestMessage").value.trim();
 
@@ -518,9 +521,7 @@
 
                 renderWishes();
                 this.reset();
-                const guestNameInput = document.getElementById("guestName");
-                guestNameInput.value = getGuestNameFromUrl() ? formatGuestName(getGuestNameFromUrl()) : 'Tamu Undangan';
-                document.getElementById("guestCount").value = 1;
+                updateGuestDisplay();
                 showToast("Terima kasih atas konfirmasi & doa Anda!");
             }
         });
