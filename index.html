@@ -49,7 +49,6 @@
         .font-serif {
             font-family: 'Cormorant Garamond', serif;
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -64,26 +63,21 @@
 </head>
 <body class="antialiased selection:bg-sage selection:text-white">
 
-    <!-- Toast Notification -->
     <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-sage"></i>
         <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
     </div>
 
-    <!-- Music Player Controls -->
     <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300">
         <i id="musicIcon" class="fa-solid fa-music animate-spin" style="animation-duration: 4s;"></i>
     </button>
     
-    <!-- Audio Source -->
     <audio id="bgAudio" loop preload="auto">
         <source src="Theme of Prontera - Saxophone Version (1).mp3" type="audio/mpeg">
     </audio>
 
-    <!-- MAIN CONTAINER -->
     <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-12 border-x border-sage/20">
 
-        <!-- 01. COVER SECTION -->
         <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.78), rgba(247, 245, 240, 0.9)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80'); background-position: center;">
 
             <div class="my-auto space-y-6">
@@ -102,18 +96,21 @@
                 <p class="text-sm tracking-[0.2em] text-darkText font-medium">05 . 12 . 2026</p>
             </div>
 
-            <div class="w-full space-y-4">
-                <a id="shareWhatsAppBtn" href="#" target="_blank" rel="noopener noreferrer" class="hidden w-full py-3.5 px-6 rounded-full bg-[#25D366] text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-[#1ea952] transition-all duration-300">
+            <div class="w-full space-y-3">
+                <a id="shareWhatsAppBtn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3.5 px-6 rounded-full bg-[#25D366] text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-[#1ea952] transition-all duration-300">
                     <i class="fa-brands fa-whatsapp mr-2"></i>
                     Share ke WhatsApp
                 </a>
+                <button id="copyLinkBtn" type="button" class="w-full py-3.5 px-6 rounded-full bg-white text-darkText text-xs uppercase tracking-widest font-semibold shadow-md border border-sage/30 hover:bg-sage hover:text-white transition-all duration-300">
+                    <i class="fa-regular fa-copy mr-2"></i>
+                    Salin Link
+                </button>
                 <a href="#opening" id="btnOpenInvitation" class="inline-block w-full py-3.5 px-6 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
                     Buka Undangan
                 </a>
             </div>
         </section>
 
-        <!-- 02. OPENING SECTION -->
         <section id="opening" class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-ivory">
             <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">A Little Celebration of Love</p>
             <div class="w-8 h-[1px] bg-sage mx-auto"></div>
@@ -126,7 +123,6 @@
             <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
         </section>
 
-        <!-- 03. THE AKAD SECTION -->
         <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
             <h2 class="font-script text-5xl text-sageDark">The Akad</h2>
             <div class="flex items-center justify-center gap-3 text-sage">
@@ -145,7 +141,6 @@
             </div>
         </section>
 
-        <!-- 04. THE CELEBRATION SECTION -->
         <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-ivory">
             <h2 class="font-script text-5xl text-sageDark">The Celebration</h2>
             <div class="flex items-center justify-center gap-3 text-sage">
@@ -165,7 +160,6 @@
             </div>
         </section>
 
-        <!-- 05. A LITTLE NOTE (SOLID SAGE CARD) -->
         <section class="py-16 px-8 text-center space-y-6 bg-sage text-white">
             <p class="text-[10px] uppercase tracking-[0.3em] text-ivory/80">A Little Note</p>
             <h2 class="font-serif text-2xl font-bold tracking-wide">Privasi &amp; Kenyamanan</h2>
@@ -179,11 +173,9 @@
             <div class="pt-2 text-white text-sm"><i class="fa-solid fa-heart"></i></div>
         </section>
 
-        <!-- 06. DRESS CODE SECTION -->
         <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
             <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray font-semibold">Dress Code</p>
             
-            <!-- Color Palette Circles -->
             <div class="flex items-center justify-center gap-3 py-2">
                 <div class="w-8 h-8 rounded-full bg-[#85937D] shadow-sm" title="Sage"></div>
                 <div class="w-8 h-8 rounded-full bg-[#E5E0D8] shadow-sm border border-gray-300" title="Ivory"></div>
@@ -199,7 +191,6 @@
             <div class="pt-2 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
         </section>
 
-        <!-- COUNTDOWN TIMER SECTION -->
         <section class="py-12 px-8 text-center bg-ivory border-b border-sage/20">
             <h2 class="font-serif text-xl font-bold text-darkText mb-1">Menghitung Hari</h2>
             <p class="text-[10px] text-mutedGray mb-6 tracking-widest uppercase">Menuju Hari Bahagia Kami</p>
@@ -224,7 +215,6 @@
             </div>
         </section>
 
-        <!-- DIGITAL GIFT / BANK ACCOUNT SECTION -->
         <section class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
             <div class="space-y-1">
                 <p class="text-[10px] uppercase tracking-widest text-mutedGray font-semibold">Tanda Kasih</p>
@@ -233,7 +223,6 @@
             </div>
 
             <div class="space-y-4 pt-2">
-                <!-- BCA Card -->
                 <div class="bg-white p-5 rounded-2xl shadow-2xs border border-sage/30 flex flex-col items-center space-y-3">
                     <div class="flex items-center justify-between w-full">
                         <span class="font-bold text-blue-900 tracking-wider">BCA</span>
@@ -250,7 +239,6 @@
                     </button>
                 </div>
 
-                <!-- SeaBank Card -->
                 <div class="bg-white p-5 rounded-2xl shadow-2xs border border-sage/30 flex flex-col items-center space-y-3">
                     <div class="flex items-center justify-between w-full">
                         <span class="font-bold text-orange-600 tracking-wider">SEABANK</span>
@@ -269,7 +257,6 @@
             </div>
         </section>
 
-        <!-- 07. RSVP & WISHES SECTION -->
         <section id="rsvp" class="py-16 px-8 bg-ivory space-y-6 border-b border-sage/20">
             <div class="text-center space-y-1">
                 <h2 class="font-script text-5xl text-sageDark">RSVP</h2>
@@ -277,7 +264,6 @@
                 <p class="text-[11px] text-darkText font-medium">Kindly confirm your attendance by 01 December 2026</p>
             </div>
 
-            <!-- RSVP Form -->
             <form id="rsvpForm" class="bg-white p-6 rounded-2xl shadow-2xs border border-sage/30 space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-darkText mb-1">Nama Lengkap</label>
@@ -316,12 +302,10 @@
             <div class="space-y-4 pt-4">
                 <h3 class="font-serif text-lg font-bold text-darkText text-center">Ucapan &amp; Doa Restu</h3>
                 <div id="wishesContainer" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-                    <!-- Dynamic wishes -->
                 </div>
             </div>
         </section>
 
-        <!-- 08. LOCATION SECTION -->
         <section class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
             <h2 class="font-script text-5xl text-sageDark">Location</h2>
             
@@ -330,7 +314,6 @@
                 <p>Jl. Leuwinanggung, Tapos, Kec. Tapos, Kota Depok, Jawa Barat 16457</p>
             </div>
 
-            <!-- Map Mockup / Embed container -->
             <div class="w-full h-48 rounded-2xl overflow-hidden border border-sage/30 shadow-2xs relative bg-gray-200">
                 <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2530635489745!2d106.883!3d-6.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1!2m2!1d106.883!2d-6.362!4m2!3m1!1s0x2e69f54a1d3d1d0d:0x9d6d9d0bbf3d8ce!5e0!3m2!1sen!2sid!4v1670000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -341,7 +324,6 @@
             </a>
         </section>
 
-        <!-- 09. CLOSING SECTION -->
         <section class="py-20 px-8 text-center space-y-6 bg-ivory">
             <div class="space-y-3 max-w-xs mx-auto text-xs text-mutedGray">
                 <p>Thank you for being part of our special day.</p>
@@ -355,7 +337,6 @@
             <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
         </section>
 
-        <!-- FOOTER BAR -->
         <footer class="py-8 px-6 text-center space-y-2 bg-sage text-ivory text-[11px]">
             <p>This digital invitation is personal and non-transferable.</p>
             <p class="font-medium">We look forward to celebrating this intimate day with you.</p>
@@ -367,9 +348,7 @@
 
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- 1. COUNTDOWN TIMER ---
         const targetDate = new Date("December 5, 2026 10:00:00").getTime();
 
         function updateCountdown() {
@@ -396,7 +375,6 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // --- 2. AUDIO PLAYER CONTROLS ---
         const bgAudio = document.getElementById("bgAudio");
         const musicToggle = document.getElementById("musicToggle");
         const musicIcon = document.getElementById("musicIcon");
@@ -425,7 +403,6 @@
             }
         });
 
-        // --- 3. GUEST NAME & WHATSAPP SHARE ---
         function getGuestNameFromUrl() {
             const params = new URLSearchParams(window.location.search);
             const rawName = params.get('to') || params.get('guest') || params.get('name') || '';
@@ -439,30 +416,42 @@
                 .replace(/\b\w/g, char => char.toUpperCase());
         }
 
-        function applyGuestDisplay() {
+        function buildShareText() {
+            const guestName = getGuestNameFromUrl();
+            const guestText = guestName ? `Yth. ${formatGuestName(guestName)}\n\n` : '';
+            return guestText + `Anda diundang pada acara pernikahan kami.\nSilakan buka undangan berikut:\n${window.location.href}`;
+        }
+
+        function setShareLink() {
             const guestName = getGuestNameFromUrl();
             const guestInfo = document.getElementById('guestInfo');
             const guestNameDisplay = document.getElementById('guestNameDisplay');
             const shareWhatsAppBtn = document.getElementById('shareWhatsAppBtn');
 
-            if (!guestName) {
+            if (guestName) {
+                guestNameDisplay.textContent = formatGuestName(guestName);
+                guestInfo.classList.remove('hidden');
+            } else {
                 guestInfo.classList.add('hidden');
-                shareWhatsAppBtn.classList.add('hidden');
-                return;
             }
 
-            const formattedGuestName = formatGuestName(guestName);
-            guestNameDisplay.textContent = formattedGuestName;
-            guestInfo.classList.remove('hidden');
-
-            const shareText = encodeURIComponent(
-                `Yth. ${formattedGuestName}\n\nAnda diundang pada acara pernikahan kami.\nSilakan buka undangan berikut:\n${window.location.href}`
-            );
+            const shareText = encodeURIComponent(buildShareText());
             shareWhatsAppBtn.href = `https://wa.me/?text=${shareText}`;
-            shareWhatsAppBtn.classList.remove('hidden');
         }
 
-        // --- 4. COPY TO CLIPBOARD & TOAST ---
+        function copyLink() {
+            const url = window.location.href;
+            const tempInput = document.createElement('input');
+            tempInput.value = url;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('Link undangan berhasil disalin!');
+        }
+
+        document.getElementById('copyLinkBtn').addEventListener('click', copyLink);
+
         function copyToClipboard(text, label) {
             const tempInput = document.createElement("input");
             tempInput.value = text;
@@ -488,7 +477,6 @@
             }, 3000);
         }
 
-        // --- 5. RSVP & WISHES MANAGEMENT ---
         const defaultWishes = [
             {
                 name: "Ahmad & Keluarga",
@@ -551,7 +539,7 @@
         });
 
         window.onload = function() {
-            applyGuestDisplay();
+            setShareLink();
             renderWishes();
         };
     </script>
