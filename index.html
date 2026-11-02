@@ -30,7 +30,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -39,9 +39,7 @@
         }
         body {
             font-family: 'Montserrat', sans-serif;
-            background:
-                radial-gradient(circle at top, rgba(133, 147, 125, 0.12), transparent 38%),
-                linear-gradient(180deg, #f7f5f0 0%, #f1efe9 100%);
+            background-color: #F7F5F0;
             color: #4A4A4A;
         }
         .font-script {
@@ -52,63 +50,6 @@
         }
         .invitation-content.hidden {
             display: none;
-        }
-        .hero-frame {
-            position: relative;
-            width: 100%;
-            min-height: calc(100vh - 2rem);
-            border: 1px solid rgba(133, 147, 125, 0.25);
-            border-radius: 2rem;
-            background: rgba(250, 249, 245, 0.52);
-            backdrop-filter: blur(4px);
-            box-shadow: 0 25px 60px rgba(107, 121, 100, 0.12);
-            overflow: hidden;
-        }
-        .hero-glow {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.9), transparent 32%),
-                linear-gradient(180deg, rgba(247,245,240,0.82), rgba(250,249,245,0.9));
-            z-index: 0;
-        }
-        .hero-ornament {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            border: 1px solid rgba(133, 147, 125, 0.22);
-            border-radius: 9999px;
-            z-index: 0;
-        }
-        .hero-ornament.top-left {
-            top: -55px;
-            left: -55px;
-        }
-        .hero-ornament.bottom-right {
-            right: -65px;
-            bottom: -65px;
-        }
-        .soft-panel {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(133, 147, 125, 0.2);
-            box-shadow: 0 18px 35px rgba(107, 121, 100, 0.08);
-        }
-        .divider-sage {
-            width: 84px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(133, 147, 125, 0.6), transparent);
-            margin: 0 auto;
-        }
-        .section-shell {
-            border: 1px solid rgba(133, 147, 125, 0.18);
-            border-radius: 1.75rem;
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 18px 35px rgba(125, 131, 118, 0.04);
-        }
-        .quote-mark {
-            color: rgba(107, 121, 100, 0.58);
-            font-size: 1.8rem;
         }
         ::-webkit-scrollbar {
             width: 5px;
@@ -139,41 +80,27 @@
 
     <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-12 border-x border-sage/20">
 
-        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-5 py-6 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.15), rgba(250, 249, 245, 0.8)), radial-gradient(circle at center, rgba(133, 147, 125, 0.12), transparent 50%);">
-            <div class="hero-frame p-5 md:p-6 flex flex-col items-center justify-between">
-                <div class="hero-glow"></div>
-                <div class="hero-ornament top-left"></div>
-                <div class="hero-ornament bottom-right"></div>
+        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.8), rgba(247, 245, 240, 0.9)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80');">
 
-                <div class="relative z-10 w-full flex justify-end pt-1">
-                    <div class="px-3 py-1.5 rounded-full border border-sage/20 bg-white/65 text-[9px] uppercase tracking-[0.35em] text-sageDark font-medium">
-                        Wedding Invitation
-                    </div>
-                </div>
+            <div class="my-auto space-y-6">
+                <p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p>
 
-                <div class="relative z-10 my-auto space-y-5 pt-8 pb-6">
-                    <p class="text-[10px] uppercase tracking-[0.38em] text-mutedGray">With joy in our hearts</p>
+                <h1 class="font-script text-6xl text-sageDark leading-tight">
+                    Reza <br>
+                    <span class="text-3xl font-serif italic text-mutedGray">&amp;</span> <br>
+                    Regina
+                </h1>
+                <p class="text-sm tracking-[0.2em] text-darkText font-medium">05 . 12 . 2026</p>
+            </div>
 
-                    <h1 class="font-script text-6xl text-sageDark leading-none">
-                        Reza <br>
-                        <span class="text-3xl font-serif italic text-mutedGray tracking-[0.08em]">&amp;</span> <br>
-                        Regina
-                    </h1>
-
-                    <div class="divider-sage"></div>
-
-                    <p class="text-sm tracking-[0.28em] text-darkText font-medium">05 . 12 . 2026</p>
-                </div>
-
-                <div class="relative z-10 w-full pb-2">
-                    <div id="guestAboveButton" class="hidden w-full flex justify-center">
-                        <div class="soft-panel rounded-[1.5rem] px-4 py-3 shadow-sm w-full max-w-[260px] min-w-[160px]">
-                            <p class="text-[9px] uppercase tracking-[0.3em] text-mutedGray mb-2">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                            <p class="font-serif text-2xl text-sageDark leading-tight break-words"><span id="guestAboveButtonName"></span></p>
-                            <a href="#opening" id="btnOpenInvitation" class="mt-3 inline-block w-full py-3 px-6 rounded-full bg-sage text-white text-[10px] uppercase tracking-[0.22em] font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
-                                Buka Undangan
-                            </a>
-                        </div>
+            <div class="w-full space-y-3">
+                <div id="guestAboveButton" class="hidden w-full flex justify-center">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl border border-sage/20 px-4 py-3 shadow-sm w-full max-w-[260px] min-w-[160px]">
+                        <p class="text-[9px] uppercase tracking-[0.3em] text-mutedGray mb-1">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                        <p class="font-serif text-2xl text-sageDark leading-tight break-words"><span id="guestAboveButtonName"></span></p>
+                        <a href="#opening" id="btnOpenInvitation" class="mt-3 inline-block w-full py-3.5 px-6 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
+                            Buka Undangan
+                        </a>
                     </div>
                 </div>
             </div>
@@ -182,18 +109,14 @@
         <div id="invitationContent" class="invitation-content hidden">
             <section id="opening" class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-ivory">
                 <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">A Little Celebration of Love</p>
-                <div class="divider-sage"></div>
+                <div class="w-8 h-[1px] bg-sage mx-auto"></div>
                 
-                <div class="section-shell max-w-sm mx-auto px-6 py-7 text-xs text-mutedGray leading-relaxed">
-                    <span class="quote-mark">“</span>
-                    <p class="font-serif text-xl italic text-darkText leading-tight">Two lives, one beautiful beginning.</p>
-                    <div class="my-4 divider-sage"></div>
-                    <p class="guest-name-inline hidden text-sm font-semibold text-darkText">Hello <span class="guest-name-text"></span>,</p>
-                    <p class="mt-3">With our closest people around us, we would be honored to have you witness our wedding day.</p>
-                    <span class="quote-mark block mt-3 text-right">”</span>
+                <div class="space-y-3 max-w-xs mx-auto text-xs text-mutedGray leading-relaxed">
+                    <p class="font-serif text-base italic text-darkText">"Two lives, one beautiful beginning."</p>
+                    <p>With our closest people around us, we would be honored to have you witness our wedding day.</p>
                 </div>
                 
-                <div class="pt-2 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
+                <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
             </section>
 
             <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
@@ -204,8 +127,7 @@
                     <div class="h-[1px] w-10 bg-sage/50"></div>
                 </div>
 
-                <div class="section-shell max-w-xs mx-auto px-6 py-7 space-y-3 text-xs text-mutedGray">
-                    <p class="guest-name-inline hidden text-sm font-semibold text-darkText"><span class="guest-name-text"></span></p>
+                <div class="space-y-3 text-xs text-mutedGray">
                     <p class="font-bold text-darkText uppercase tracking-wider text-sm">Sabtu, 5 Desember 2026</p>
                     <div class="w-6 h-[1px] bg-sage/30 mx-auto"></div>
                     <p class="text-sm font-semibold text-darkText">10.00 WIB</p>
@@ -223,8 +145,7 @@
                     <div class="h-[1px] w-10 bg-sage/50"></div>
                 </div>
 
-                <div class="section-shell max-w-xs mx-auto px-6 py-7 space-y-3 text-xs text-mutedGray leading-relaxed">
-                    <p class="guest-name-inline hidden text-sm font-semibold text-darkText"><span class="guest-name-text"></span></p>
+                <div class="space-y-3 text-xs text-mutedGray max-w-xs mx-auto">
                     <p>After the akad, please join us for an intimate celebration.</p>
                     <p>We can't wait to share this joy and create beautiful memories together with you.</p>
                     <p class="font-bold text-darkText pt-2">11.00 WIB Onwards</p>
@@ -239,11 +160,10 @@
                 <p class="text-[10px] uppercase tracking-[0.3em] text-ivory/80">A Little Note</p>
                 <h2 class="font-serif text-2xl font-bold tracking-wide">Privasi &amp; Kenyamanan</h2>
                 
-                <div class="section-shell max-w-xs mx-auto bg-white/10 border-white/10 px-6 py-7 text-xs leading-relaxed text-ivory">
-                    <p class="guest-name-inline hidden font-medium"><span class="guest-name-text"></span></p>
-                    <p class="mt-3">Karena kami ingin merayakan hari ini dalam suasana yang intim dan personal, undangan ini diperuntukkan bagi 1 orang tamu sesuai nama yang tercantum.</p>
-                    <p class="mt-3">Mohon berkenan hadir sesuai dengan jumlah tamu yang tertera pada undangan.</p>
-                    <p class="font-medium pt-3">Terima kasih telah memahami dan menjadi bagian dari hari istimewa kami.</p>
+                <div class="space-y-3 text-xs leading-relaxed text-ivory max-w-xs mx-auto">
+                    <p>Karena kami ingin merayakan hari ini dalam suasana yang intim dan personal, undangan ini diperuntukkan bagi 1 orang tamu sesuai nama yang tercantum.</p>
+                    <p>Mohon berkenan hadir sesuai dengan jumlah tamu yang tertera pada undangan.</p>
+                    <p class="font-medium pt-2">Terima kasih telah memahami dan menjadi bagian dari hari istimewa kami.</p>
                 </div>
 
                 <div class="pt-2 text-white text-sm"><i class="fa-solid fa-heart"></i></div>
@@ -295,7 +215,7 @@
                 <div class="space-y-1">
                     <p class="text-[10px] uppercase tracking-widest text-mutedGray font-semibold">Tanda Kasih</p>
                     <h2 class="font-serif text-2xl font-bold text-darkText">Amplop Digital</h2>
-                    <p class="text-xs text-mutedGray max-w-xs mx-auto">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi kado, Anda dapat menggunakan rekening di bawah ini.</p>
+                    <p class="text-xs text-mutedGray max-w-xs mx-auto">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi kado, Anda dapat menggunakan rekening di bawah ini:</p>
                 </div>
 
                 <div class="space-y-4 pt-2">
@@ -336,7 +256,6 @@
             <section id="rsvp" class="py-16 px-8 bg-ivory space-y-6 border-b border-sage/20">
                 <div class="text-center space-y-1">
                     <h2 class="font-script text-5xl text-sageDark">RSVP</h2>
-                    <p class="guest-name-inline hidden text-xs text-mutedGray"><span class="guest-name-text"></span></p>
                     <p class="text-xs text-mutedGray">We have reserved one seat especially for you.</p>
                     <p class="text-[11px] text-darkText font-medium">Kindly confirm your attendance by 01 December 2026</p>
                 </div>
@@ -359,9 +278,7 @@
 
                     <div>
                         <label class="block text-xs font-semibold text-darkText mb-1">Jumlah Tamu</label>
-                        <div id="guestCountDisplay" class="w-full px-4 py-3 rounded-xl border border-sage/40 bg-warmCream/50 text-xs font-medium text-darkText text-center shadow-sm min-h-[42px] flex items-center justify-center">
-                            1
-                        </div>
+                        <div id="guestCountDisplay" class="w-full px-4 py-3 rounded-xl border border-sage/40 bg-warmCream/50 text-xs font-medium text-darkText text-center shadow-sm min-h-[42px] flex items-center justify-center">1</div>
                     </div>
 
                     <div>
@@ -390,13 +307,12 @@
                 <h2 class="font-script text-5xl text-sageDark">Location</h2>
                 
                 <div class="space-y-1 text-xs text-mutedGray">
-                    <p class="guest-name-inline hidden text-xs font-semibold text-darkText"><span class="guest-name-text"></span></p>
                     <p class="font-bold text-darkText uppercase">Restoran Serreh Wangi</p>
                     <p>Jl. Leuwinanggung, Tapos, Kec. Tapos, Kota Depok, Jawa Barat 16457</p>
                 </div>
 
                 <div class="w-full h-48 rounded-2xl overflow-hidden border border-sage/30 shadow-2xs relative bg-gray-200">
-                    <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2530635489745!2d106.883!3d-6.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f4054d8f0e6f%3A0x2c4b7c0a4f0fe45!2sRestoran%20Serreh%20Wangi!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2530635489745!2d106.883!3d-6.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f4d0d1f9b0a9%3A0x2f8f7e8a0d8d9f81!2sRestoran%20Serreh%20Wangi!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300 shadow-md">
@@ -407,7 +323,6 @@
 
             <section class="py-20 px-8 text-center space-y-6 bg-ivory">
                 <div class="space-y-3 max-w-xs mx-auto text-xs text-mutedGray">
-                    <p class="guest-name-inline hidden text-sm font-semibold text-darkText"><span class="guest-name-text"></span></p>
                     <p>Thank you for being part of our special day.</p>
                     <p class="font-serif italic text-base text-darkText">We can't wait to celebrate with you!</p>
                 </div>
