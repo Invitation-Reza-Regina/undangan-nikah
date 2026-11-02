@@ -51,6 +51,38 @@
         .invitation-content.hidden {
             display: none;
         }
+        .hero-kicker {
+            letter-spacing: 0.38em;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(84, 96, 83, 0.9);
+            text-transform: uppercase;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+        }
+        .hero-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(4.8rem, 12vw, 7.4rem);
+            line-height: 0.75;
+            letter-spacing: 0.02em;
+            color: rgba(106, 120, 97, 0.96);
+            text-shadow: 0 2px 0 rgba(255,255,255,0.2);
+            font-weight: 400;
+        }
+        .hero-title .hero-and {
+            display: block;
+            font-size: 0.84em;
+            margin: 0.14rem 0 0.2rem;
+            color: rgba(140, 130, 117, 0.94);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 600;
+        }
+        .hero-date {
+            letter-spacing: 0.36em;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(74, 74, 74, 0.92);
+        }
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -83,20 +115,20 @@
         <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.35), rgba(247, 245, 240, 0.65)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80');">
 
             <div class="my-auto space-y-6">
-                <p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p>
+                <p class="hero-kicker">With Joy in Our Hearts</p>
 
-                <h1 class="font-script text-6xl text-sageDark leading-tight">
-                    Reza <br>
-                    <span class="text-3xl font-serif italic text-mutedGray">&amp;</span> <br>
+                <h1 class="hero-title leading-none">
+                    Reza
+                    <span class="hero-and">&amp;</span>
                     Regina
                 </h1>
-                <p class="text-sm tracking-[0.2em] text-darkText font-medium">05 . 12 . 2026</p>
+                <p class="hero-date">05 . 12 . 2026</p>
             </div>
 
             <div class="w-full space-y-3">
                 <div id="guestAboveButton" class="hidden w-full flex justify-center">
                     <div class="bg-white/90 backdrop-blur-sm rounded-2xl border border-sage/20 px-4 py-3 shadow-sm w-full max-w-[260px] min-w-[160px]">
-                        <p class="text-[9px] uppercase tracking-[0.3em] text-mutedGray mb-1">You're invited <br/> Dear</p>
+                        <p class="text-[9px] uppercase tracking-[0.3em] text-mutedGray mb-1">Kepada Yth. Bapak/Ibu/Saudara/i</p>
                         <p class="font-serif text-2xl text-sageDark leading-tight break-words"><span id="guestAboveButtonName"></span></p>
                         <a href="#opening" id="btnOpenInvitation" class="mt-3 inline-block w-full py-3.5 px-6 rounded-full bg-sage text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:bg-sageDark transition-all duration-300">
                             Buka Undangan
@@ -456,7 +488,7 @@
         const rsvpQrCode = document.getElementById('rsvpQrCode');
         const rsvpFormLink = document.getElementById('rsvpFormLink');
         if (rsvpQrCode) {
-            rsvpQrCode.src = `RESERVASI LUNCH INTIMATE REGINA & REZA.png`;
+            rsvpQrCode.src = `assets/rsvp-barcode.png`;
         }
         if (rsvpFormLink) {
             rsvpFormLink.href = gformUrl;
