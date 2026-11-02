@@ -262,7 +262,7 @@
 
                 <div class="bg-white p-6 rounded-2xl shadow-2xs border border-sage/30 space-y-4 text-center">
                     <div class="flex justify-center">
-                        <img id="rsvpQrCode" alt="QR Code RSVP" class="w-52 h-52 rounded-xl border border-sage/30 bg-white p-2 shadow-sm" src="https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSeFwdk_QDl932B8dW5cdCsvYx2iQKJe41UpEXhm5Nma8V6_VA%2Fviewform%3Fusp%3Dpublish-editor">
+                        <img id="rsvpQrCode" alt="QR Code RSVP" class="w-52 h-52 rounded-xl border border-sage/30 bg-white p-2 shadow-sm" src="assets/rsvp-barcode.png">
                     </div>
                     <p class="text-xs text-mutedGray">Scan QR code untuk membuka Google Form RSVP.</p>
                     <a id="rsvpFormLink" href="https://docs.google.com/forms/d/e/1FAIpQLSeFwdk_QDl932B8dW5cdCsvYx2iQKJe41UpEXhm5Nma8V6_VA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300 shadow-md">
@@ -456,7 +456,7 @@
         const rsvpQrCode = document.getElementById('rsvpQrCode');
         const rsvpFormLink = document.getElementById('rsvpFormLink');
         if (rsvpQrCode) {
-            rsvpQrCode.src = `https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=${encodeURIComponent(gformUrl)}`;
+            rsvpQrCode.src = `assets/rsvp-barcode.png`;
         }
         if (rsvpFormLink) {
             rsvpFormLink.href = gformUrl;
