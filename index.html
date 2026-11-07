@@ -51,6 +51,30 @@
         .invitation-content.hidden {
             display: none;
         }
+        #invitationContent section {
+            scroll-margin-top: 80px;
+        }
+        .bottom-nav-link {
+            position: relative;
+            transition: all 0.25s ease;
+        }
+        .bottom-nav-link.active {
+            color: #6b7964;
+        }
+        .bottom-nav-link.active i {
+            color: #6b7964;
+        }
+        .bottom-nav-link.active::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 2px;
+            border-radius: 9999px;
+            background: #85937D;
+        }
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -312,23 +336,23 @@
 
             <nav aria-label="Navigasi undangan" class="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-sage/20 bg-warmCream/95 px-2 py-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur">
                 <div class="grid grid-cols-5 gap-1">
-                    <a href="#opening" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                    <a href="#opening" class="bottom-nav-link flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
                         <i class="fa-solid fa-house text-base text-sage"></i>
                         <span>Awal</span>
                     </a>
-                    <a href="#akad" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                    <a href="#akad" class="bottom-nav-link flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
                         <i class="fa-solid fa-ring text-base text-sage"></i>
                         <span>Akad</span>
                     </a>
-                    <a href="#hadiah" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                    <a href="#hadiah" class="bottom-nav-link flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
                         <i class="fa-solid fa-gift text-base text-sage"></i>
                         <span>Hadiah</span>
                     </a>
-                    <a href="#rsvp" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                    <a href="#rsvp" class="bottom-nav-link flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
                         <i class="fa-solid fa-envelope text-base text-sage"></i>
                         <span>RSVP</span>
                     </a>
-                    <a href="#lokasi" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                    <a href="#lokasi" class="bottom-nav-link flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
                         <i class="fa-solid fa-location-dot text-base text-sage"></i>
                         <span>Lokasi</span>
                     </a>
@@ -532,6 +556,33 @@
         if (rsvpLink) {
             rsvpLink.href = RSVP_FORM_URL;
         }
+
+        const navLinks = document.querySelectorAll('.bottom-nav-link');
+        const sections = [...document.querySelectorAll('#invitationContent section[id]')];
+
+        function updateActiveNav() {
+            const scrollY = window.scrollY + 140;
+            let currentId = 'opening';
+
+            for (const section of sections) {
+                if (section.offsetTop <= scrollY) {
+                    currentId = section.id;
+                }
+            }
+
+            navLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === '#' + currentId;
+                link.classList.toggle('active', isActive);
+                if (isActive) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        updateActiveNav();
 
         window.onload = function() {
             updateGuestDisplay();
