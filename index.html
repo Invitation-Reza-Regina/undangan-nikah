@@ -65,12 +65,12 @@
 </head>
 <body class="antialiased selection:bg-sage selection:text-white">
 
-    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2">
         <i class="fa-solid fa-circle-check text-sage"></i>
         <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
     </div>
 
-    <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300">
+    <button id="musicToggle" aria-label="Toggle Audio" class="fixed bottom-20 right-6 z-40 w-12 h-12 rounded-full bg-sage text-white shadow-lg flex items-center justify-center hover:bg-sageDark transition-all duration-300">
         <i id="musicIcon" class="fa-solid fa-music animate-spin" style="animation-duration: 4s;"></i>
     </button>
     
@@ -78,11 +78,12 @@
         <source src="Theme of Prontera - Saxophone Version (1).mp3" type="audio/mpeg">
     </audio>
 
-    <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-12 border-x border-sage/20">
+    <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-20 border-x border-sage/20">
 
-        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.8), rgba(247, 245, 240, 0.9)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80');">
+        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.72), rgba(247, 245, 240, 0.85)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80'); background-size: cover;">
+            <div class="absolute inset-0 bg-white/20"></div>
 
-            <div class="my-auto space-y-6">
+            <div class="my-auto space-y-6 relative z-10">
                 <p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p>
 
                 <h1 class="font-script text-6xl text-sageDark leading-tight">
@@ -93,7 +94,7 @@
                 <p class="text-sm tracking-[0.2em] text-darkText font-medium">05 . 12 . 2026</p>
             </div>
 
-            <div class="w-full space-y-3">
+            <div class="w-full space-y-3 relative z-10">
                 <div id="guestAboveButton" class="hidden w-full flex justify-center">
                     <div class="bg-white/90 backdrop-blur-sm rounded-2xl border border-sage/20 px-4 py-3 shadow-sm w-full max-w-[260px] min-w-[160px]">
                         <p class="text-[9px] uppercase tracking-[0.3em] text-mutedGray mb-1">You're Invited <br/> Dear</p>
@@ -119,7 +120,7 @@
                 <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
             </section>
 
-            <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
+            <section id="akad" class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
                 <h2 class="font-script text-5xl text-sageDark">The Akad</h2>
                 <div class="flex items-center justify-center gap-3 text-sage">
                     <div class="h-[1px] w-10 bg-sage/50"></div>
@@ -211,7 +212,7 @@
                 </div>
             </section>
 
-            <section class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
+            <section id="hadiah" class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
                 <div class="space-y-1">
                     <p class="text-[10px] uppercase tracking-widest text-mutedGray font-semibold">Tanda Kasih</p>
                     <h2 class="font-serif text-2xl font-bold text-darkText">Amplop Digital</h2>
@@ -278,7 +279,7 @@
                 </div>
             </section>
 
-            <section class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
+            <section id="lokasi" class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
                 <h2 class="font-script text-5xl text-sageDark">Location</h2>
                 
                 <div class="space-y-1 text-xs text-mutedGray">
@@ -287,7 +288,7 @@
                 </div>
 
                 <div class="w-full h-48 rounded-2xl overflow-hidden border border-sage/30 shadow-2xs relative bg-gray-200">
-                    <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2530635489745!2d106.883!3d-6.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f0f!2sRestoran%20Serreh%20Wangi!5e0!3m2!1sen!2sid!4v1690000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="Google Maps Location" src="https://www.google.com/maps?q=Restoran%20Serreh%20Wangi%20Depok&output=embed" class="w-full h-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300 shadow-md">
@@ -308,6 +309,31 @@
 
                 <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
             </section>
+
+            <nav aria-label="Navigasi undangan" class="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-sage/20 bg-warmCream/95 px-2 py-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur">
+                <div class="grid grid-cols-5 gap-1">
+                    <a href="#opening" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                        <i class="fa-solid fa-house text-base text-sage"></i>
+                        <span>Awal</span>
+                    </a>
+                    <a href="#akad" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                        <i class="fa-solid fa-ring text-base text-sage"></i>
+                        <span>Akad</span>
+                    </a>
+                    <a href="#hadiah" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                        <i class="fa-solid fa-gift text-base text-sage"></i>
+                        <span>Hadiah</span>
+                    </a>
+                    <a href="#rsvp" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                        <i class="fa-solid fa-envelope text-base text-sage"></i>
+                        <span>RSVP</span>
+                    </a>
+                    <a href="#lokasi" class="flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
+                        <i class="fa-solid fa-location-dot text-base text-sage"></i>
+                        <span>Lokasi</span>
+                    </a>
+                </div>
+            </nav>
 
             <footer class="py-8 px-6 text-center space-y-2 bg-sage text-ivory text-[11px]">
                 <p>This digital invitation is personal and non-transferable.</p>
