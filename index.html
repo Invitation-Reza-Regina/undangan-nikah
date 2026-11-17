@@ -117,7 +117,7 @@
 </head>
 <body class="antialiased selection:bg-sage selection:text-white">
 
-    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2">
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 ease-in-out bg-darkText text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-sage"></i>
         <span id="toast-message" class="text-sm font-medium">Berhasil disalin!</span>
     </div>
@@ -132,7 +132,7 @@
 
     <div class="max-w-md mx-auto bg-warmCream min-h-screen shadow-2xl relative overflow-hidden pb-20 border-x border-sage/20">
 
-        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.72), rgba(247, 245, 240, 0.85)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80'); background-size: cover;">
+        <section class="relative min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(247, 245, 240, 0.35), rgba(247, 245, 240, 0.75)), url('cover.jpg');">
             <div class="absolute inset-0 bg-white/20"></div>
 
             <div class="my-auto space-y-6 relative z-10">
@@ -170,6 +170,21 @@
                 </div>
                 
                 <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
+            </section>
+
+            <section id="love-story" class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">Our Story</p>
+                <h2 class="font-script text-5xl text-sageDark">Love Story</h2>
+                <div class="flex items-center justify-center gap-3 text-sage">
+                    <div class="h-[1px] w-10 bg-sage/50"></div>
+                    <i class="fa-solid fa-heart text-xs"></i>
+                    <div class="h-[1px] w-10 bg-sage/50"></div>
+                </div>
+                <div class="space-y-4 max-w-xs mx-auto text-xs text-mutedGray leading-relaxed">
+                    <p>Dulu kami hanyalah dua orang asing yang dipertemukan sebagai rekan training.</p>
+                    <p>Lalu saling menemukan, saling menguatkan, hingga akhirnya saling memilih untuk selamanya.</p>
+                    <p>Jadilah saksi saat kami mengucapkan janji yang akan kami jaga seumur hidup. Kami tunggu kehadiran kalian ya.</p>
+                </div>
             </section>
 
             <section id="akad" class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-warmCream">
@@ -282,7 +297,7 @@
                             <p class="font-mono text-base font-bold text-darkText tracking-widest">0663297012</p>
                             <p class="text-xs text-mutedGray mt-0.5">a.n. Regina Claodia</p>
                         </div>
-                        <button onclick="copyToClipboard('0663297012', 'Nomor Rekening BCA')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-all duration-300">
+                        <button onclick="copyToClipboard('0663297012', 'Nomor Rekening BCA')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-colors">
                             <i class="fa-regular fa-copy"></i>
                             Salin Rekening BCA
                         </button>
@@ -298,7 +313,7 @@
                             <p class="font-mono text-base font-bold text-darkText tracking-widest">901649988060</p>
                             <p class="text-xs text-mutedGray mt-0.5">a.n. Reza Mutaqin</p>
                         </div>
-                        <button onclick="copyToClipboard('901649988060', 'Nomor Rekening SeaBank')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-all duration-300">
+                        <button onclick="copyToClipboard('901649988060', 'Nomor Rekening SeaBank')" class="w-full py-2 rounded-xl bg-ivory text-darkText text-xs font-semibold hover:bg-sage hover:text-white transition-colors">
                             <i class="fa-regular fa-copy"></i>
                             Salin Rekening SeaBank
                         </button>
@@ -318,7 +333,7 @@
                         <img id="rsvpQrCode" alt="QR code RSVP" class="w-52 h-52 rounded-2xl border border-sage/20 bg-white p-3 shadow-sm">
                     </div>
                     <p class="text-xs text-mutedGray leading-relaxed">Scan barcode untuk membuka Google Form dan mengisi konfirmasi kehadiran Anda.</p>
-                    <a id="rsvpLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300 shadow-md">
+                    <a id="rsvpLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold hover:bg-sageDark transition-colors">
                         <i class="fa-solid fa-link"></i>
                         Konfirmasi Kehadiran
                     </a>
@@ -340,10 +355,10 @@
                 </div>
 
                 <div class="w-full h-48 rounded-2xl overflow-hidden border border-sage/30 shadow-2xs relative bg-gray-200">
-                    <iframe title="Google Maps Location" src="https://www.google.com/maps?q=Restoran%20Serreh%20Wangi%20Depok&output=embed" class="w-full h-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="Google Maps Location" src="https://www.google.com/maps?q=Restoran%20Serreh%20Wangi%20Depok&output=embed" class="w-full h-full border-0" loading="lazy" allowfullscreen></iframe>
                 </div>
 
-                <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase tracking-wider hover:bg-sageDark transition-all duration-300 shadow-md">
+                <a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-sage text-white text-xs font-semibold hover:bg-sageDark transition-colors">
                     <i class="fa-solid fa-map-location-dot"></i>
                     Open in Maps
                 </a>
@@ -362,7 +377,7 @@
                 <div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
             </section>
 
-            <nav aria-label="Navigasi undangan" class="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-sage/20 bg-warmCream/95 px-2 py-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur">
+            <nav aria-label="Navigasi undangan" class="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-sage/20 bg-warmCream/95 px-2 py-2 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm">
                 <div class="grid grid-cols-5 gap-1">
                     <a href="#opening" class="bottom-nav-link flex flex-col items-center gap-1 py-2 text-[9px] text-darkText hover:text-sage transition-colors">
                         <i class="fa-solid fa-house text-base text-sage"></i>
