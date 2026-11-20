@@ -84,9 +84,9 @@
         if (!nonEmpty.length) return null;
         const actualNameIndex = nameIndex >= 0 ? nameIndex : nonEmpty[0].index;
         const fields = nonEmpty.filter(item => item.index !== actualNameIndex).map(item => ({
-          label: item.index === statusIndex ? 'Konfirmasi Kehadiran' : item.index === messageIndex ? 'Ucapan & Doa' : item.label,
+          label: item.index === statusIndex ? ' | ' : item.index === messageIndex ? '|' : item.label,
           value: item.value,
-          kind: item.index === statusIndex ? 'status' : item.index === messageIndex ? 'message' : 'other'
+          kind: item.index === statusIndex ? '|' : item.index === messageIndex ? 'message' : 'other'
         }));
         return { name: cells[actualNameIndex] || 'Tamu Undangan', fields };
       }).filter(Boolean).reverse();
