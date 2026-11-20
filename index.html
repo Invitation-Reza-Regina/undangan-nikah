@@ -18,65 +18,33 @@
     .font-script { font-family: 'Alex Brush', cursive; }
     .font-serif { font-family: 'Cormorant Garamond', serif; }
     .invitation-content.hidden { display: none; }
+    #wishesContainer::-webkit-scrollbar { width: 4px; }
+    #wishesContainer::-webkit-scrollbar-track { background: #F7F5F0; border-radius: 8px; }
+    #wishesContainer::-webkit-scrollbar-thumb { background: #85937D; border-radius: 8px; }
   </style>
 </head>
 <body class="antialiased">
   <div class="max-w-md mx-auto min-h-screen bg-warmCream shadow-2xl border-x border-sage/20">
     <section class="min-h-screen flex flex-col items-center justify-between text-center px-8 py-16 bg-cover bg-center" style="background-image:linear-gradient(to bottom,rgba(247,245,240,.82),rgba(247,245,240,.94)),url('https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=900&q=80')">
-      <div class="my-auto space-y-6">
-        <p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p>
-        <h1 class="font-script text-6xl text-sageDark leading-tight">Reza<br><span class="text-3xl font-serif italic text-mutedGray">&amp;</span><br>Regina</h1>
-        <p class="text-sm tracking-[0.2em] font-medium">05 . 12 . 2026</p>
-      </div>
-      <div id="guestAboveButton" class="hidden bg-white/90 rounded-2xl border border-sage/20 px-5 py-4 shadow-sm w-full max-w-[260px]">
-        <p class="text-[10px] uppercase tracking-widest text-mutedGray">You're Invited · Dear</p>
-        <p id="guestAboveButtonName" class="font-serif text-2xl text-sageDark"></p>
-        <button id="btnOpenInvitation" class="mt-3 w-full py-3 rounded-full bg-sage text-white text-xs uppercase tracking-widest">Buka Undangan</button>
-      </div>
+      <div class="my-auto space-y-6"><p class="text-xs uppercase tracking-widest text-mutedGray">With joy in our hearts</p><h1 class="font-script text-6xl text-sageDark leading-tight">Reza<br><span class="text-3xl font-serif italic text-mutedGray">&amp;</span><br>Regina</h1><p class="text-sm tracking-[0.2em] font-medium">05 . 12 . 2026</p></div>
+      <div id="guestAboveButton" class="hidden bg-white/90 rounded-2xl border border-sage/20 px-5 py-4 shadow-sm w-full max-w-[260px]"><p class="text-[10px] uppercase tracking-widest text-mutedGray">You're Invited · Dear</p><p id="guestAboveButtonName" class="font-serif text-2xl text-sageDark"></p><button id="btnOpenInvitation" class="mt-3 w-full py-3 rounded-full bg-sage text-white text-xs uppercase tracking-widest">Buka Undangan</button></div>
       <button id="btnOpenInvitationFallback" class="px-8 py-3 rounded-full bg-sage text-white text-xs uppercase tracking-widest shadow-md">Buka Undangan</button>
     </section>
-
     <div id="invitationContent" class="invitation-content hidden">
-      <section id="opening" class="py-16 px-8 text-center space-y-5 border-b border-sage/20 bg-ivory">
-        <p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">A Little Celebration of Love</p>
-        <p class="font-serif text-base italic">"Two lives, one beautiful beginning."</p>
-        <p class="text-xs text-mutedGray leading-relaxed">With our closest people around us, we would be honored to have you witness our wedding day.</p>
-        <i class="fa-solid fa-heart text-sage"></i>
-      </section>
-      <section class="py-16 px-8 text-center space-y-5 border-b border-sage/20">
-        <p class="text-[10px] uppercase tracking-widest text-mutedGray">Our Story</p><h2 class="font-script text-5xl text-sageDark">Love Story</h2>
-        <div class="space-y-4 max-w-xs mx-auto text-xs text-mutedGray leading-relaxed"><p>Dulu kami hanyalah dua orang asing yang dipertemukan sebagai rekan training.</p><p>Lalu saling menemukan, saling menguatkan, hingga akhirnya saling memilih untuk selamanya.</p><p>Jadilah saksi saat kami mengucapkan janji yang akan kami jaga seumur hidup. Kami tunggu kehadiran kalian ya.</p></div>
-      </section>
-      <section class="py-16 px-8 text-center space-y-5 border-b border-sage/20 bg-ivory">
-        <h2 class="font-script text-5xl text-sageDark">The Akad</h2><i class="fa-solid fa-ring text-sage"></i>
-        <div class="space-y-3 text-xs text-mutedGray"><p class="font-bold text-darkText">Sabtu, 5 Desember 2026</p><p class="text-sm font-semibold text-darkText">10.00 WIB</p><p class="font-semibold text-darkText">Restoran Serreh Wangi</p><p>Jl. Leuwinanggung, Tapos, Kec. Tapos, Kota Depok, Jawa Barat 16457</p></div>
-      </section>
-      <section class="py-16 px-8 text-center space-y-4 border-b border-sage/20">
-        <h2 class="font-script text-5xl text-sageDark">The Celebration</h2><p class="text-xs text-mutedGray">After the akad, please join us for an intimate celebration.</p><p class="text-xs font-bold">11.00 - 13.00 WIB</p><p class="text-xs font-semibold">Mingle Wedding Lunch &amp; Celebration</p><i class="fa-solid fa-heart text-sage"></i>
-      </section>
-      <section class="py-16 px-8 text-center space-y-4 bg-sage text-white">
-        <p class="text-[10px] uppercase tracking-widest">A Little Note</p><h2 class="font-serif text-2xl font-bold">Privasi &amp; Kenyamanan</h2>
-        <div class="space-y-3 text-xs leading-relaxed text-ivory max-w-xs mx-auto"><p>Karena kami ingin merayakan hari ini dalam suasana yang intim dan personal, undangan ini diperuntukkan bagi 1 orang tamu sesuai nama yang tercantum.</p><p>Mohon berkenan hadir sesuai dengan jumlah tamu yang tertera pada undangan.</p><p>Terima kasih telah memahami dan menjadi bagian dari hari istimewa kami.</p></div>
-      </section>
-      <section class="py-14 px-8 text-center space-y-4 border-b border-sage/20">
-        <p class="text-[10px] uppercase tracking-widest text-mutedGray">Dress Code</p><div class="flex justify-center gap-3"><span class="w-8 h-8 rounded-full bg-[#85937D]"></span><span class="w-8 h-8 rounded-full bg-[#E5E0D8]"></span><span class="w-8 h-8 rounded-full bg-[#D4C5B9]"></span><span class="w-8 h-8 rounded-full bg-[#A39B8B]"></span></div><h3 class="font-script text-3xl text-sageDark">Elegant Garden Soft Neutrals</h3><p class="text-[11px] text-mutedGray">Sage • Ivory • Beige • Muted Tones</p>
-      </section>
+      <section id="opening" class="py-16 px-8 text-center space-y-5 border-b border-sage/20 bg-ivory"><p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">A Little Celebration of Love</p><p class="font-serif text-base italic">"Two lives, one beautiful beginning."</p><p class="text-xs text-mutedGray leading-relaxed">With our closest people around us, we would be honored to have you witness our wedding day.</p><i class="fa-solid fa-heart text-sage"></i></section>
+      <section class="py-16 px-8 text-center space-y-5 border-b border-sage/20"><p class="text-[10px] uppercase tracking-widest text-mutedGray">Our Story</p><h2 class="font-script text-5xl text-sageDark">Love Story</h2><div class="space-y-4 max-w-xs mx-auto text-xs text-mutedGray leading-relaxed"><p>Dulu kami hanyalah dua orang asing yang dipertemukan sebagai rekan training.</p><p>Lalu saling menemukan, saling menguatkan, hingga akhirnya saling memilih untuk selamanya.</p><p>Jadilah saksi saat kami mengucapkan janji yang akan kami jaga seumur hidup. Kami tunggu kehadiran kalian ya.</p></div></section>
+      <section class="py-16 px-8 text-center space-y-5 border-b border-sage/20 bg-ivory"><h2 class="font-script text-5xl text-sageDark">The Akad</h2><i class="fa-solid fa-ring text-sage"></i><div class="space-y-3 text-xs text-mutedGray"><p class="font-bold text-darkText">Sabtu, 5 Desember 2026</p><p class="text-sm font-semibold text-darkText">10.00 WIB</p><p class="font-semibold text-darkText">Restoran Serreh Wangi</p><p>Jl. Leuwinanggung, Tapos, Kec. Tapos, Kota Depok, Jawa Barat 16457</p></div></section>
+      <section class="py-16 px-8 text-center space-y-4 border-b border-sage/20"><h2 class="font-script text-5xl text-sageDark">The Celebration</h2><p class="text-xs text-mutedGray">After the akad, please join us for an intimate celebration.</p><p class="text-xs font-bold">11.00 - 13.00 WIB</p><p class="text-xs font-semibold">Mingle Wedding Lunch &amp; Celebration</p><i class="fa-solid fa-heart text-sage"></i></section>
+      <section class="py-16 px-8 text-center space-y-4 bg-sage text-white"><p class="text-[10px] uppercase tracking-widest">A Little Note</p><h2 class="font-serif text-2xl font-bold">Privasi &amp; Kenyamanan</h2><div class="space-y-3 text-xs leading-relaxed text-ivory max-w-xs mx-auto"><p>Karena kami ingin merayakan hari ini dalam suasana yang intim dan personal, undangan ini diperuntukkan bagi 1 orang tamu sesuai nama yang tercantum.</p><p>Mohon berkenan hadir sesuai dengan jumlah tamu yang tertera pada undangan.</p><p>Terima kasih telah memahami dan menjadi bagian dari hari istimewa kami.</p></div></section>
+      <section class="py-14 px-8 text-center space-y-4 border-b border-sage/20"><p class="text-[10px] uppercase tracking-widest text-mutedGray">Dress Code</p><div class="flex justify-center gap-3"><span class="w-8 h-8 rounded-full bg-[#85937D]"></span><span class="w-8 h-8 rounded-full bg-[#E5E0D8]"></span><span class="w-8 h-8 rounded-full bg-[#D4C5B9]"></span><span class="w-8 h-8 rounded-full bg-[#A39B8B]"></span></div><h3 class="font-script text-3xl text-sageDark">Elegant Garden Soft Neutrals</h3><p class="text-[11px] text-mutedGray">Sage • Ivory • Beige • Muted Tones</p></section>
       <section class="py-12 px-8 text-center bg-ivory border-b border-sage/20"><h2 class="font-serif text-xl font-bold mb-1">Menghitung Hari</h2><p class="text-[10px] text-mutedGray mb-6 tracking-widest uppercase">Menuju Hari Bahagia Kami</p><div class="grid grid-cols-4 gap-2" id="countdown"></div></section>
-      <section class="py-14 px-8 text-center space-y-5 border-b border-sage/20"><p class="text-[10px] uppercase tracking-widest text-mutedGray">Tanda Kasih</p><h2 class="font-serif text-2xl font-bold">Amplop Digital</h2><p class="text-xs text-mutedGray">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi kado, Anda dapat menggunakan rekening di bawah ini.</p>
-        <div class="bg-white p-5 rounded-2xl border border-sage/30 text-left space-y-2"><b class="text-blue-900">BCA</b><p class="text-[10px] uppercase text-mutedGray">Nomor Rekening</p><p class="font-mono font-bold">0663297012</p><p class="text-xs text-mutedGray">a.n. Regina Claodia</p><button class="copy-account w-full py-2 rounded-xl bg-ivory text-xs font-semibold" data-account="0663297012">Salin Rekening BCA</button></div>
-        <div class="bg-white p-5 rounded-2xl border border-sage/30 text-left space-y-2"><b class="text-orange-600">SEABANK</b><p class="text-[10px] uppercase text-mutedGray">Nomor Rekening</p><p class="font-mono font-bold">901649988060</p><p class="text-xs text-mutedGray">a.n. Reza Mutaqin</p><button class="copy-account w-full py-2 rounded-xl bg-ivory text-xs font-semibold" data-account="901649988060">Salin Rekening SeaBank</button></div>
-      </section>
-      <section id="rsvp" class="py-16 px-8 bg-ivory space-y-6 border-b border-sage/20">
-        <div class="text-center space-y-2"><h2 class="font-script text-5xl text-sageDark">RSVP</h2><p class="text-xs text-mutedGray">Silakan konfirmasi kehadiran Anda dengan scan barcode di bawah ini.</p><p class="text-[11px] font-medium">Batas konfirmasi: 01 Desember 2026</p></div>
-        <div class="bg-white p-6 rounded-2xl border border-sage/30 space-y-5 text-center"><img id="rsvpQrCode" alt="QR code RSVP" class="w-52 h-52 mx-auto rounded-2xl border border-sage/20 bg-white p-3"><p class="text-xs text-mutedGray">Scan barcode untuk membuka Google Form dan mengisi konfirmasi kehadiran Anda.</p><a id="rsvpLink" target="_blank" rel="noopener noreferrer" class="block py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase">Buka Google Form</a></div>
-        <div class="text-[11px] text-mutedGray text-center space-y-1"><p>Apabila ada pertanyaan, silakan hubungi:</p><p class="font-semibold text-darkText">REZA : 0857 7711 4594</p><p class="font-semibold text-darkText">REGINA : 0882 0055 24161</p></div>
-      </section>
-
-      <section id="ucapan-doa" class="py-16 px-8 bg-warmCream border-b border-sage/20 space-y-6">
+      <section class="py-14 px-8 text-center space-y-5 border-b border-sage/20"><p class="text-[10px] uppercase tracking-widest text-mutedGray">Tanda Kasih</p><h2 class="font-serif text-2xl font-bold">Amplop Digital</h2><p class="text-xs text-mutedGray">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi kado, Anda dapat menggunakan rekening di bawah ini.</p><div class="bg-white p-5 rounded-2xl border border-sage/30 text-left space-y-2"><b class="text-blue-900">BCA</b><p class="text-[10px] uppercase text-mutedGray">Nomor Rekening</p><p class="font-mono font-bold">0663297012</p><p class="text-xs text-mutedGray">a.n. Regina Claodia</p><button class="copy-account w-full py-2 rounded-xl bg-ivory text-xs font-semibold" data-account="0663297012">Salin Rekening BCA</button></div><div class="bg-white p-5 rounded-2xl border border-sage/30 text-left space-y-2"><b class="text-orange-600">SEABANK</b><p class="text-[10px] uppercase text-mutedGray">Nomor Rekening</p><p class="font-mono font-bold">901649988060</p><p class="text-xs text-mutedGray">a.n. Reza Mutaqin</p><button class="copy-account w-full py-2 rounded-xl bg-ivory text-xs font-semibold" data-account="901649988060">Salin Rekening SeaBank</button></div></section>
+      <section id="rsvp" class="py-16 px-8 bg-ivory space-y-6 border-b border-sage/20"><div class="text-center space-y-2"><h2 class="font-script text-5xl text-sageDark">RSVP</h2><p class="text-xs text-mutedGray">Silakan konfirmasi kehadiran Anda dengan scan barcode di bawah ini.</p><p class="text-[11px] font-medium">Batas konfirmasi: 01 Desember 2026</p></div><div class="bg-white p-6 rounded-2xl border border-sage/30 space-y-5 text-center"><img id="rsvpQrCode" alt="QR code RSVP" class="w-52 h-52 mx-auto rounded-2xl border border-sage/20 bg-white p-3"><p class="text-xs text-mutedGray">Scan barcode untuk membuka Google Form dan mengisi konfirmasi kehadiran Anda.</p><a id="rsvpLink" target="_blank" rel="noopener noreferrer" class="block py-3 rounded-full bg-sage text-white text-xs font-semibold uppercase">Buka Google Form</a></div><div class="text-[11px] text-mutedGray text-center space-y-1"><p>Apabila ada pertanyaan, silakan hubungi:</p><p class="font-semibold text-darkText">REZA : 0857 7711 4594</p><p class="font-semibold text-darkText">REGINA : 0882 0055 24161</p></div></section>
+      <section id="ucapan-doa" class="py-12 px-8 bg-warmCream border-b border-sage/20 space-y-5">
         <div class="text-center space-y-2"><p class="text-[10px] uppercase tracking-[0.3em] text-mutedGray">Warm Wishes</p><h2 class="font-script text-5xl text-sageDark">Ucapan &amp; Doa</h2><div class="flex items-center justify-center gap-3 text-sage"><span class="h-px w-10 bg-sage/50"></span><i class="fa-solid fa-heart text-xs"></i><span class="h-px w-10 bg-sage/50"></span></div><p class="text-xs text-mutedGray">Doa dan ucapan tulus dari keluarga serta sahabat.</p></div>
-        <div id="wishesContainer" class="space-y-3" aria-live="polite"><p class="text-center text-xs text-mutedGray">Memuat ucapan &amp; doa...</p></div>
+        <div id="wishesContainer" class="max-h-[360px] overflow-y-auto overscroll-contain space-y-2.5 pr-1" aria-label="Daftar seluruh ucapan dan konfirmasi" aria-live="polite"><p class="text-center text-xs text-mutedGray">Memuat ucapan &amp; doa...</p></div>
+        <p id="wishesCount" class="text-center text-[10px] text-mutedGray"></p>
       </section>
-
       <section class="py-16 px-8 text-center space-y-5 border-b border-sage/20"><h2 class="font-script text-5xl text-sageDark">Location</h2><div class="space-y-1 text-xs text-mutedGray"><p class="font-bold text-darkText">Restoran Serreh Wangi</p><p>Jl. Leuwinanggung, Tapos, Kec. Tapos, Kota Depok, Jawa Barat 16457</p></div><div class="w-full h-48 rounded-2xl overflow-hidden border border-sage/30"><iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2530635489745!2d106.883!3d-6.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f0f!2sRestoran%20Serreh%20Wangi!5e0!3m2!1sen!2sid!4v1690000000000" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div><a href="https://maps.app.goo.gl/gZLPHYCYyWo8QK4bA?g_st=ac" target="_blank" rel="noopener noreferrer" class="block py-3 rounded-full bg-sage text-white text-xs uppercase">Open in Maps</a></section>
       <section class="py-16 px-8 text-center space-y-4 bg-ivory"><p class="text-xs text-mutedGray">Thank you for being part of our special day.</p><p class="font-serif italic">We can't wait to celebrate with you!</p><h2 class="font-script text-5xl text-sageDark">Reza &amp; Regina</h2><i class="fa-solid fa-heart text-sage"></i></section>
       <footer class="py-8 px-6 text-center space-y-2 bg-sage text-ivory text-[11px]"><p>This digital invitation is personal and non-transferable.</p><p>We look forward to celebrating this intimate day with you.</p><p class="pt-4 border-t border-ivory/20">© 2026 Reza &amp; Regina · With Love</p></footer>
@@ -88,75 +56,63 @@
     const rsvpLink = document.getElementById('rsvpLink');
     if (qr) qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(RSVP_FORM_URL)}`;
     if (rsvpLink) rsvpLink.href = RSVP_FORM_URL;
-
-    const guest = new URLSearchParams(location.search).get('to') || new URLSearchParams(location.search).get('guest') || new URLSearchParams(location.search).get('name') || '';
-    const guestCard = document.getElementById('guestAboveButton');
-    if (guest.trim()) { guestCard.classList.remove('hidden'); document.getElementById('guestAboveButtonName').textContent = guest.replace(/\+/g, ' ').trim(); }
-    function openInvitation(event) {
-      if (event) event.preventDefault();
-      document.getElementById('invitationContent').classList.remove('hidden');
-      document.getElementById('opening').scrollIntoView({ behavior: 'smooth' });
-    }
+    const params = new URLSearchParams(location.search);
+    const guest = params.get('to') || params.get('guest') || params.get('name') || '';
+    if (guest.trim()) { document.getElementById('guestAboveButton').classList.remove('hidden'); document.getElementById('guestAboveButtonName').textContent = guest.replace(/\+/g, ' ').trim(); }
+    function openInvitation(event) { if (event) event.preventDefault(); document.getElementById('invitationContent').classList.remove('hidden'); document.getElementById('opening').scrollIntoView({ behavior: 'smooth' }); }
     document.getElementById('btnOpenInvitation').addEventListener('click', openInvitation);
     document.getElementById('btnOpenInvitationFallback').addEventListener('click', openInvitation);
-
-    document.querySelectorAll('.copy-account').forEach(button => button.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(button.dataset.account); button.textContent = 'Berhasil disalin!'; }
-      catch { button.textContent = 'Gagal menyalin'; }
-      setTimeout(() => button.textContent = button.dataset.account === '0663297012' ? 'Salin Rekening BCA' : 'Salin Rekening SeaBank', 2200);
-    }));
-
+    document.querySelectorAll('.copy-account').forEach(button => button.addEventListener('click', async () => { try { await navigator.clipboard.writeText(button.dataset.account); button.textContent = 'Berhasil disalin!'; } catch { button.textContent = 'Gagal menyalin'; } setTimeout(() => button.textContent = button.dataset.account === '0663297012' ? 'Salin Rekening BCA' : 'Salin Rekening SeaBank', 2200); }));
     const countdown = document.getElementById('countdown');
-    function updateCountdown() {
-      const diff = new Date('December 5, 2026 10:00:00').getTime() - Date.now();
-      const values = diff > 0 ? [Math.floor(diff / 86400000), Math.floor(diff / 3600000) % 24, Math.floor(diff / 60000) % 60, Math.floor(diff / 1000) % 60] : [0, 0, 0, 0];
-      countdown.innerHTML = values.map((value, i) => `<div class="bg-white p-3 rounded-xl border border-sage/20"><span class="font-serif text-2xl font-bold block">${String(value).padStart(2, '0')}</span><span class="text-[9px] uppercase text-mutedGray">${['Hari', 'Jam', 'Menit', 'Detik'][i]}</span></div>`).join('');
-    }
+    function updateCountdown() { const diff = new Date('December 5, 2026 10:00:00').getTime() - Date.now(); const values = diff > 0 ? [Math.floor(diff / 86400000), Math.floor(diff / 3600000) % 24, Math.floor(diff / 60000) % 60, Math.floor(diff / 1000) % 60] : [0,0,0,0]; countdown.innerHTML = values.map((value,i) => `<div class="bg-white p-3 rounded-xl border border-sage/20"><span class="font-serif text-2xl font-bold block">${String(value).padStart(2,'0')}</span><span class="text-[9px] uppercase text-mutedGray">${['Hari','Jam','Menit','Detik'][i]}</span></div>`).join(''); }
     updateCountdown(); setInterval(updateCountdown, 1000);
 
     const WISHES_SHEET_ID = '1ZQ_QOGDRpphnEEzwi1I7esuqKGBchKa2oYnpTPadvCE';
     const wishesContainer = document.getElementById('wishesContainer');
+    const wishesCount = document.getElementById('wishesCount');
     const normalizeHeader = value => String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
     const escapeHtml = value => { const el = document.createElement('span'); el.textContent = value == null ? '' : String(value); return el.innerHTML; };
-
     function renderWishes(rows, headers) {
-      const nameKeys = ['nama', 'name', 'namatamu', 'namalengkap', 'pengirim'];
-      const messageKeys = ['ucapan', 'doa', 'pesan', 'message', 'ucapandoa', 'ucapandan doa'];
-      const nameIndex = headers.findIndex(header => nameKeys.includes(normalizeHeader(header)));
-      const messageIndex = headers.findIndex(header => messageKeys.includes(normalizeHeader(header)));
+      const normalized = headers.map(normalizeHeader);
+      const findColumn = patterns => normalized.findIndex(header => patterns.some(pattern => pattern.test(header)));
+      const nameIndex = findColumn([/^nama$/, /namatamu/, /namalengkap/, /pengirim/, /^name$/]);
+      const statusIndex = findColumn([/konfirmasikehadiran/, /statuskehadiran/, /kehadiran/, /^rsvp$/, /^status$/]);
+      const messageIndex = findColumn([/^ucapan$/, /^doa$/, /ucapandoa/, /pesan/, /message/, /komentar/]);
       const entries = rows.map(row => {
         const cells = (row.c || []).map(cell => cell && cell.v != null ? String(cell.f || cell.v).trim() : '');
-        return {
-          name: cells[nameIndex >= 0 ? nameIndex : 1] || 'Tamu Undangan',
-          message: cells[messageIndex >= 0 ? messageIndex : 2] || ''
-        };
-      }).filter(entry => entry.message);
+        const nonEmpty = cells.map((value,index) => ({ index, value, label: headers[index] || `Kolom ${index + 1}` })).filter(item => item.value);
+        if (!nonEmpty.length) return null;
+        const actualNameIndex = nameIndex >= 0 ? nameIndex : nonEmpty[0].index;
+        const fields = nonEmpty.filter(item => item.index !== actualNameIndex).map(item => ({
+          label: item.index === statusIndex ? 'Konfirmasi Kehadiran' : item.index === messageIndex ? 'Ucapan & Doa' : item.label,
+          value: item.value,
+          kind: item.index === statusIndex ? 'status' : item.index === messageIndex ? 'message' : 'other'
+        }));
+        return { name: cells[actualNameIndex] || 'Tamu Undangan', fields };
+      }).filter(Boolean).reverse();
       wishesContainer.replaceChildren();
-      if (!entries.length) {
-        wishesContainer.innerHTML = '<p class="text-center text-xs text-mutedGray">Belum ada ucapan. Jadilah yang pertama mengirimkan doa!</p>';
-        return;
-      }
-      entries.reverse().forEach(entry => {
+      wishesCount.textContent = entries.length ? `${entries.length} ucapan` : '';
+      if (!entries.length) { wishesContainer.innerHTML = '<p class="text-center text-xs text-mutedGray py-4">Belum ada ucapan atau konfirmasi.</p>'; return; }
+      entries.forEach(entry => {
         const card = document.createElement('article');
-        card.className = 'bg-white p-4 rounded-xl border border-sage/20 space-y-2 shadow-sm';
-        card.innerHTML = `<p class="font-semibold text-xs text-darkText">${escapeHtml(entry.name)}</p><p class="text-xs text-mutedGray leading-relaxed whitespace-pre-wrap">${escapeHtml(entry.message)}</p>`;
+        card.className = 'bg-white px-4 py-3 rounded-xl border border-sage/20 shadow-sm';
+        const fieldsHtml = entry.fields.map(field => `<div class="pt-2 mt-2 border-t border-sage/10 ${field.kind === 'message' ? 'text-xs leading-relaxed whitespace-pre-wrap break-words' : 'text-[11px]'}"><span class="block mb-0.5 text-[9px] uppercase tracking-wider text-mutedGray">${escapeHtml(field.label)}</span><span class="${field.kind === 'status' ? 'inline-block px-2 py-0.5 rounded-full bg-sage/10 text-sageDark font-medium' : 'text-darkText'}">${escapeHtml(field.value)}</span></div>`).join('');
+        card.innerHTML = `<p class="font-semibold text-xs text-darkText">${escapeHtml(entry.name)}</p>${fieldsHtml}`;
         wishesContainer.appendChild(card);
       });
     }
-
     async function loadWishes() {
-      const endpoint = `https://docs.google.com/spreadsheets/d/${WISHES_SHEET_ID}/gviz/tq?tqx=out:json`;
       try {
+        const endpoint = `https://docs.google.com/spreadsheets/d/${WISHES_SHEET_ID}/gviz/tq?tqx=out:json`;
         const response = await fetch(endpoint);
         if (!response.ok) throw new Error('Sheet tidak dapat diakses');
         const text = await response.text();
-        const jsonText = text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
-        const data = JSON.parse(jsonText);
+        const data = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1));
         if (!data.table) throw new Error('Format data Google Sheet tidak dikenali');
         renderWishes(data.table.rows || [], (data.table.cols || []).map(col => col.label || col.id || ''));
       } catch (error) {
-        console.error('Gagal memuat ucapan dari Google Sheets:', error);
-        wishesContainer.innerHTML = '<p class="text-center text-xs text-mutedGray leading-relaxed">Ucapan &amp; doa belum dapat dimuat. Pastikan Google Sheet dapat diakses oleh siapa saja yang memiliki link.</p>';
+        console.error('Gagal memuat data Google Sheets:', error);
+        wishesContainer.innerHTML = '<p class="text-center text-xs text-mutedGray leading-relaxed py-4">Data belum dapat dimuat. Pastikan Google Sheet dapat diakses oleh siapa saja yang memiliki link.</p>';
       }
     }
     loadWishes();
