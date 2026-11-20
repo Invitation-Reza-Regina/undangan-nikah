@@ -26,6 +26,7 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #F7F5F0; }
         ::-webkit-scrollbar-thumb { background: #85937D; border-radius: 4px; }
+        #sectionNavigation { background-color: rgba(133, 147, 125, 0.90) !important; }
     </style>
 </head>
 <body class="antialiased selection:bg-sage selection:text-white">
@@ -104,7 +105,7 @@
         </div>
     </div>
 
-    <nav id="sectionNavigation" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1rem)] max-w-md rounded-full border border-white/30 bg-[#a8524d]/90 px-2 py-2 shadow-lg backdrop-blur-md" aria-label="Navigasi undangan">
+    <nav id="sectionNavigation" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1rem)] max-w-md rounded-full border border-white/30 px-2 py-2 shadow-lg backdrop-blur-md" aria-label="Navigasi undangan">
         <div class="grid grid-cols-5 items-center">
             <a href="#opening" aria-label="Pembuka" title="Pembuka" class="flex h-11 items-center justify-center text-white text-xl hover:text-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"><i class="fa-regular fa-envelope-open-text" aria-hidden="true"></i></a>
             <a href="#akad" aria-label="Akad" title="Akad" class="flex h-11 items-center justify-center text-white text-xl hover:text-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"><i class="fa-solid fa-people-group" aria-hidden="true"></i></a>
@@ -166,9 +167,7 @@
             if (guestAboveButton) guestAboveButton.classList.remove('hidden');
             guestNameTexts.forEach(el => el.textContent = finalGuestName); guestNameLines.forEach(el => el.classList.remove('hidden'));
         }
-        function copyToClipboard(text, label) {
-            const tempInput = document.createElement("input"); tempInput.value = text; document.body.appendChild(tempInput); tempInput.select(); document.execCommand("copy"); document.body.removeChild(tempInput); showToast(`${label} berhasil disalin!`);
-        }
+        function copyToClipboard(text, label) { const tempInput = document.createElement("input"); tempInput.value = text; document.body.appendChild(tempInput); tempInput.select(); document.execCommand("copy"); document.body.removeChild(tempInput); showToast(`${label} berhasil disalin!`); }
         function showToast(message) {
             const toast = document.getElementById("toast"), toastMsg = document.getElementById("toast-message"); toastMsg.innerText = message;
             toast.classList.remove("translate-y-[-150%]"); toast.classList.add("translate-y-0");
@@ -188,10 +187,7 @@
             const statusIndex = findColumn(['kehadiran', 'status', 'attendance']);
             if (nameIndex < 0) nameIndex = 0; if (messageIndex < 0) messageIndex = nameIndex === 0 && columns.length > 1 ? 1 : 0;
             const cellText = (row, index) => { const cell = row.c && row.c[index]; if (!cell) return ''; const value = cell.f !== null && cell.f !== undefined ? cell.f : cell.v; return value === null || value === undefined ? '' : String(value).trim(); };
-            googleSheetWishes = response.table.rows.reduce((wishes, row) => {
-                const name = cellText(row, nameIndex), message = cellText(row, messageIndex); if (!name && !message) return wishes;
-                wishes.push({ name: name || 'Tamu', message, guestStatus: statusIndex >= 0 ? cellText(row, statusIndex) : '' }); return wishes;
-            }, []);
+            googleSheetWishes = response.table.rows.reduce((wishes, row) => { const name = cellText(row, nameIndex), message = cellText(row, messageIndex); if (!name && !message) return wishes; wishes.push({ name: name || 'Tamu', message, guestStatus: statusIndex >= 0 ? cellText(row, statusIndex) : '' }); return wishes; }, []);
             googleWishesCurrentPage = 1; renderGoogleSheetWishesPage();
         }
         function renderGoogleSheetWishesPage() {
