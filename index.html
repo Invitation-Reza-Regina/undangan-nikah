@@ -66,7 +66,7 @@
             </section>
             <section class="py-16 px-8 text-center space-y-6 border-b border-sage/20 bg-ivory">
                 <h2 class="font-script text-5xl text-sageDark">The Celebration</h2><div class="flex items-center justify-center gap-3 text-sage"><div class="h-[1px] w-10 bg-sage/50"></div><i class="fa-solid fa-glass-cheers text-xs"></i><div class="h-[1px] w-10 bg-sage/50"></div></div>
-                <div class="space-y-3 text-xs text-mutedGray max-w-xs mx-auto"><p>After the akad, please join us for an intimate celebration.</p><p>We can't wait to share this joy and create beautiful memories together with you.</p><p class="font-bold text-darkText pt-2">11.00-13.00 WIB</p><p class="font-semibold text-darkText">Mingle Wedding Lunch &amp; Celebration</p></div><div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
+                <div class="space-y-3 text-xs text-mutedGray max-w-xs mx-auto"><p>After the akad, please join us for an intimate celebration.</p><p>We can't wait to share this joy and create beautiful memories together with you.</p><p class="font-bold text-darkText pt-2">11.00 WIB Onwards</p><p class="font-semibold text-darkText">Mingle Wedding Lunch &amp; Celebration</p></div><div class="pt-4 text-sage text-sm"><i class="fa-solid fa-heart"></i></div>
             </section>
             <section class="py-16 px-8 text-center space-y-6 bg-sage text-white">
                 <p class="text-[10px] uppercase tracking-[0.3em] text-ivory/80">A Little Note</p><h2 class="font-serif text-2xl font-bold tracking-wide">Privasi &amp; Kenyamanan</h2>
@@ -203,7 +203,21 @@
                 const quote = document.createElement('i'); quote.className = 'fa-solid fa-quote-left absolute left-4 top-5 text-sage/50 text-sm'; quote.setAttribute('aria-hidden', 'true');
                 const content = document.createElement('div'); content.className = 'space-y-2'; const heading = document.createElement('div'); heading.className = 'flex items-center justify-between gap-2';
                 const guestName = document.createElement('p'); guestName.className = 'font-serif text-lg font-semibold text-sageDark break-words'; guestName.textContent = wish.name; heading.appendChild(guestName);
-                if (wish.guestStatus) { const badge = document.createElement('span'); badge.className = 'shrink-0 text-[9px] uppercase tracking-wider text-sageDark bg-sage/10 px-2 py-1 rounded-full'; badge.textContent = wish.guestStatus; heading.appendChild(badge); }
+                if (wish.guestStatus) {
+                    const badge = document.createElement('span');
+                    const normalizedStatus = normalizeSheetHeader(wish.guestStatus);
+                    let badgeClass = 'shrink-0 text-[9px] uppercase tracking-wider px-2 py-1 rounded-full border ';
+                    if (normalizedStatus.includes('tidak') && (normalizedStatus.includes('hadir') || normalizedStatus.includes('bisa'))) {
+                        badgeClass += 'text-red-700 bg-red-100 border-red-200';
+                    } else if (normalizedStatus.includes('ya') || normalizedStatus.includes('hadir')) {
+                        badgeClass += 'text-green-700 bg-green-100 border-green-200';
+                    } else {
+                        badgeClass += 'text-sageDark bg-sage/10 border-sage/20';
+                    }
+                    badge.className = badgeClass;
+                    badge.textContent = wish.guestStatus;
+                    heading.appendChild(badge);
+                }
                 const wishText = document.createElement('p'); wishText.className = 'text-xs text-mutedGray leading-relaxed whitespace-pre-line break-words'; wishText.textContent = wish.message;
                 content.append(heading, wishText); card.append(quote, content); container.appendChild(card);
             });
