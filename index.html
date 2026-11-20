@@ -211,6 +211,15 @@
                 </div>
                 <p id="googleWishesStatus" class="text-center text-xs text-mutedGray py-4" role="status" aria-live="polite">Memuat ucapan dan doa...</p>
                 <div id="googleWishesContainer" class="space-y-3" aria-live="polite"></div>
+                <nav id="googleWishesPagination" class="hidden flex items-center justify-between gap-3 pt-5" aria-label="Navigasi halaman ucapan">
+                    <button id="googleWishesPrevious" type="button" class="px-4 py-2 rounded-full border border-sage/30 text-xs font-semibold text-sageDark hover:bg-sage/10 disabled:opacity-40 disabled:cursor-not-allowed" aria-label="Halaman sebelumnya">
+                        <i class="fa-solid fa-chevron-left mr-1" aria-hidden="true"></i> Sebelumnya
+                    </button>
+                    <span id="googleWishesPageInfo" class="text-xs text-mutedGray text-center" aria-live="polite"></span>
+                    <button id="googleWishesNext" type="button" class="px-4 py-2 rounded-full border border-sage/30 text-xs font-semibold text-sageDark hover:bg-sage/10 disabled:opacity-40 disabled:cursor-not-allowed" aria-label="Halaman selanjutnya">
+                        Selanjutnya <i class="fa-solid fa-chevron-right ml-1" aria-hidden="true"></i>
+                    </button>
+                </nav>
             </section>
 
             <section class="py-16 px-8 text-center space-y-6 bg-warmCream border-b border-sage/20">
@@ -350,6 +359,9 @@
         // Read-only Google Sheets integration, isolated from the existing RSVP and page scripts.
         const WISHES_SHEET_ID = '1ZQ_QOGDRpphnEEzwi1I7esuqKGBchKa2oYnpTPadvCE';
         const WISHES_SHEET_CALLBACK = 'handleWeddingWishesSheetResponse';
+        const WISHES_PAGE_SIZE = 5;
+        let googleSheetWishes = [];
+        let googleWishesCurrentPage = 1;
 
         function normalizeSheetHeader(value) {
             return String(value || '').toLocaleLowerCase('id').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
@@ -382,13 +394,43 @@
                 return value === null || value === undefined ? '' : String(value).trim();
             };
 
-            let renderedCount = 0;
-            response.table.rows.forEach(row => {
+            googleSheetWishes = response.table.rows.reduce((wishes, row) => {
                 const name = cellText(row, nameIndex);
                 const message = cellText(row, messageIndex);
-                const guestStatus = statusIndex >= 0 ? cellText(row, statusIndex) : '';
-                if (!name && !message) return;
+                if (!name && !message) return wishes;
+                wishes.push({
+                    name: name || 'Tamu',
+                    message,
+                    guestStatus: statusIndex >= 0 ? cellText(row, statusIndex) : ''
+                });
+                return wishes;
+            }, []);
+            googleWishesCurrentPage = 1;
+            renderGoogleSheetWishesPage();
+        }
 
+        function renderGoogleSheetWishesPage() {
+            const container = document.getElementById('googleWishesContainer');
+            const status = document.getElementById('googleWishesStatus');
+            const pagination = document.getElementById('googleWishesPagination');
+            const previousButton = document.getElementById('googleWishesPrevious');
+            const nextButton = document.getElementById('googleWishesNext');
+            const pageInfo = document.getElementById('googleWishesPageInfo');
+            if (!container || !status) return;
+
+            container.replaceChildren();
+            const totalCount = googleSheetWishes.length;
+            if (!totalCount) {
+                status.textContent = 'Belum ada ucapan dan doa.';
+                if (pagination) pagination.classList.add('hidden');
+                return;
+            }
+
+            const totalPages = Math.ceil(totalCount / WISHES_PAGE_SIZE);
+            const startIndex = (googleWishesCurrentPage - 1) * WISHES_PAGE_SIZE;
+            const pageWishes = googleSheetWishes.slice(startIndex, startIndex + WISHES_PAGE_SIZE);
+
+            pageWishes.forEach(wish => {
                 const card = document.createElement('article');
                 card.className = 'relative bg-white p-5 pl-10 rounded-2xl border border-sage/20 shadow-sm text-left';
                 const quote = document.createElement('i');
@@ -400,25 +442,45 @@
                 heading.className = 'flex items-center justify-between gap-2';
                 const guestName = document.createElement('p');
                 guestName.className = 'font-serif text-lg font-semibold text-sageDark break-words';
-                guestName.textContent = name || 'Tamu';
+                guestName.textContent = wish.name;
                 heading.appendChild(guestName);
-                if (guestStatus) {
+                if (wish.guestStatus) {
                     const badge = document.createElement('span');
                     badge.className = 'shrink-0 text-[9px] uppercase tracking-wider text-sageDark bg-sage/10 px-2 py-1 rounded-full';
-                    badge.textContent = guestStatus;
+                    badge.textContent = wish.guestStatus;
                     heading.appendChild(badge);
                 }
                 const wishText = document.createElement('p');
                 wishText.className = 'text-xs text-mutedGray leading-relaxed whitespace-pre-line break-words';
-                wishText.textContent = message;
+                wishText.textContent = wish.message;
                 content.append(heading, wishText);
                 card.append(quote, content);
                 container.appendChild(card);
-                renderedCount += 1;
             });
 
-            status.textContent = renderedCount ? `${renderedCount} ucapan dan doa dari keluarga serta sahabat.` : 'Belum ada ucapan dan doa.';
+            const firstWish = startIndex + 1;
+            const lastWish = startIndex + pageWishes.length;
+            status.textContent = `Menampilkan ${firstWish}–${lastWish} dari ${totalCount} ucapan dan doa dari keluarga serta sahabat.`;
+            if (pagination) {
+                pagination.classList.toggle('hidden', totalPages <= 1);
+                pagination.classList.toggle('flex', totalPages > 1);
+            }
+            if (previousButton) previousButton.disabled = googleWishesCurrentPage === 1;
+            if (nextButton) nextButton.disabled = googleWishesCurrentPage === totalPages;
+            if (pageInfo) pageInfo.textContent = `Halaman ${googleWishesCurrentPage} dari ${totalPages}`;
         }
+
+        document.getElementById('googleWishesPrevious')?.addEventListener('click', () => {
+            if (googleWishesCurrentPage <= 1) return;
+            googleWishesCurrentPage -= 1;
+            renderGoogleSheetWishesPage();
+        });
+        document.getElementById('googleWishesNext')?.addEventListener('click', () => {
+            const totalPages = Math.ceil(googleSheetWishes.length / WISHES_PAGE_SIZE);
+            if (googleWishesCurrentPage >= totalPages) return;
+            googleWishesCurrentPage += 1;
+            renderGoogleSheetWishesPage();
+        });
 
         function loadGoogleSheetWishes() {
             const status = document.getElementById('googleWishesStatus');
